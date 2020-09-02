@@ -1,9 +1,6 @@
-#emulator_div {
+.emulator {
     position:relative;
     overflow-x:scroll;
-}
-
-.emulator {
     border:3px solid gray;
     box-shadow:5px 5px 5px lightgray;
     margin: 20px auto;
