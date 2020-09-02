@@ -6,7 +6,7 @@ title: MOESI Emulator
   <meta charset="UTF-8">
   <title>Main</title>
   <script src="main.js"></script>
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
