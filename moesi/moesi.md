@@ -1,5 +1,6 @@
 ---
 title: MOESI Emulator
+note: This emulator may (probably...) contain bugs.
 ---
 <html>
 <head>
@@ -11,6 +12,7 @@ title: MOESI Emulator
 
 <body>
   <div id="myapp"></div>
+  <p> {{ page.note }} </p>
   <script>
   var app = Elm.Main.init({
     node: document.getElementById('myapp')
