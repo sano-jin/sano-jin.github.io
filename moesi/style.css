@@ -66,8 +66,8 @@
     font-weight:bold;
 }
 
-.emulator button {
-    cursor:pointer;
+td > .emulator button {
+    cursor: pointer;
     background: none;
     border: none;
     margin: 0;
