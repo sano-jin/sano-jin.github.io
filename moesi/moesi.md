@@ -1,11 +1,12 @@
 ---
-title: Contact
+title: MOESI Emulator
 ---
 <html>
 <head>
   <meta charset="UTF-8">
   <title>Main</title>
   <script src="main.js"></script>
+  <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
