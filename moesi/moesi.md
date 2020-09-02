@@ -11,6 +11,7 @@ note: This emulator may (probably...) contain bugs.
 </head>
 
 <body>
+  <a href="https://github.com/sano-jin/moesi-emulator"> https://github.com/sano-jin/moesi-emulator </a>
   <div id="myapp"></div>
   <p> {{ page.note }} </p>
   <script>
