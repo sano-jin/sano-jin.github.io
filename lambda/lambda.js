@@ -6884,7 +6884,10 @@ var $elm$html$Html$Attributes$value = $elm$html$Html$Attributes$stringProperty('
 var $author$project$Main$view = function (model) {
 	return A2(
 		$elm$html$Html$div,
-		_List_Nil,
+		_List_fromArray(
+			[
+				$elm$html$Html$Attributes$id('lambda-evaluator')
+			]),
 		_List_fromArray(
 			[
 				A3(
@@ -6898,33 +6901,42 @@ var $author$project$Main$view = function (model) {
 				_List_Nil),
 				$author$project$Main$css('style.css'),
 				A2(
-				$elm$html$Html$input,
-				_List_fromArray(
-					[
-						$elm$html$Html$Attributes$id('expression-reader'),
-						$elm$html$Html$Attributes$placeholder('input lambda expression \u23CE'),
-						$elm$html$Html$Attributes$value(model.G),
-						$elm$html$Html$Events$onInput($author$project$Main$Change)
-					]),
-				_List_Nil),
-				A2(
-				$elm$html$Html$button,
-				_List_fromArray(
-					[
-						$elm$html$Html$Attributes$id('expression-submitter'),
-						$elm$html$Html$Events$onClick(
-						$author$project$Main$Eval(model.G))
-					]),
-				_List_fromArray(
-					[
-						$elm$html$Html$text('parse')
-					])),
-				A2(
 				$elm$html$Html$div,
-				_List_Nil,
 				_List_fromArray(
 					[
-						$elm$html$Html$text(model.I)
+						$elm$html$Html$Attributes$id('console')
+					]),
+				_List_fromArray(
+					[
+						A2(
+						$elm$html$Html$input,
+						_List_fromArray(
+							[
+								$elm$html$Html$Attributes$id('expression-reader'),
+								$elm$html$Html$Attributes$placeholder('input lambda expression \u23CE'),
+								$elm$html$Html$Attributes$value(model.G),
+								$elm$html$Html$Events$onInput($author$project$Main$Change)
+							]),
+						_List_Nil),
+						A2(
+						$elm$html$Html$button,
+						_List_fromArray(
+							[
+								$elm$html$Html$Attributes$id('expression-submitter'),
+								$elm$html$Html$Events$onClick(
+								$author$project$Main$Eval(model.G))
+							]),
+						_List_fromArray(
+							[
+								$elm$html$Html$text('parse')
+							])),
+						A2(
+						$elm$html$Html$div,
+						_List_Nil,
+						_List_fromArray(
+							[
+								$elm$html$Html$text(model.I)
+							]))
 					])),
 				A2(
 				$elm$html$Html$div,
