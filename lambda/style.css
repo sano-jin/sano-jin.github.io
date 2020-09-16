@@ -39,8 +39,17 @@ body {
     margin-left: 10px;
 }
 
-@media only screen and (min-width: 600px) {
+@media only screen and (min-width: 601px) {
     #lambda-evaluator *{
 	font-size: 28px;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    #lambda-evaluator *{
+	font-size: 24px;
+    }
+    #expression-reader {
+	width: 100%;
     }
 }
