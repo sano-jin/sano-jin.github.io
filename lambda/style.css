@@ -24,7 +24,6 @@ body {
 
 #expression-reader {
     text-align: left;
-    min-width: 360px;
     border: 1px solid gray;
     background: rgba(0,0,0,0.5);
     outline: none;
@@ -43,13 +42,13 @@ body {
     #lambda-evaluator *{
 	font-size: 28px;
     }
+    #expression-reader {
+	    min-width: 360px;
+    }
 }
 
 @media only screen and (max-width: 600px) {
     #lambda-evaluator *{
 	font-size: 24px;
-    }
-    #expression-reader {
-	min-width: 80%;
     }
 }
