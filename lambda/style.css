@@ -10,7 +10,6 @@ body {
 
 #lambda-evaluator *{
     text-align: center;
-    font-size: 28px;
     background: transparent;
     font-family: 'Inconsolata', monospace;
     color: #eee;
@@ -38,4 +37,10 @@ body {
     padding: 0 20px;
     outline: none;
     margin-left: 10px;
+}
+
+@media only screen and (min-width: 600px) {
+    #lambda-evaluator *{
+	font-size: 28px;
+    }
 }
