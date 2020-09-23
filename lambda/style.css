@@ -45,6 +45,8 @@ body {
 #states ul {
     list-style-type: none;
     line-height: 1.25em;
+    padding: 0;
+    margin: 0;
 }
 
 #states ul li ul { 
