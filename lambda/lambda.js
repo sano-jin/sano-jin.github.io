@@ -4566,7 +4566,7 @@ var $elm$core$Basics$EQ = 1;
 var $elm$core$Basics$GT = 2;
 var $elm$core$Basics$LT = 0;
 var $elm$core$Maybe$Nothing = {$: 1};
-var $author$project$Main$init = {O: _List_Nil, F: _List_Nil, G: '', I: '', J: $elm$core$Maybe$Nothing};
+var $author$project$Main$init = {O: _List_Nil, F: _List_Nil, G: '(\\x.(\\y.xy)w)z', I: '', J: $elm$core$Maybe$Nothing};
 var $elm$core$Result$Err = function (a) {
 	return {$: 1, a: a};
 };
@@ -7295,7 +7295,7 @@ var $author$project$Main$view_of_states = F2(
 				_List_fromArray(
 					[
 						$elm$html$Html$text(
-						transType + (' join ' + $elm$core$String$fromInt(i)))
+						transType + (': join ' + $elm$core$String$fromInt(i)))
 					]));
 		} else {
 			var term = state.a;
@@ -7310,13 +7310,6 @@ var $author$project$Main$view_of_states = F2(
 					[
 						A2(
 						$elm$html$Html$div,
-						_List_Nil,
-						_List_fromArray(
-							[
-								$elm$html$Html$text(transType)
-							])),
-						A2(
-						$elm$html$Html$div,
 						_List_fromArray(
 							[
 								$elm$html$Html$Attributes$class('term')
@@ -7324,7 +7317,7 @@ var $author$project$Main$view_of_states = F2(
 						_List_fromArray(
 							[
 								$elm$html$Html$text(
-								$author$project$Lambda$showT(term))
+								transType + (': ' + $author$project$Lambda$showT(term)))
 							])),
 						A2(
 						$elm$html$Html$ul,
