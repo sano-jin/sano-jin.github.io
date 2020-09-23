@@ -42,6 +42,9 @@ body {
     outline: none;
 }
 
+#lambda-evaluator ul {
+    list-style-type: none;
+}
 
 #lambda-evaluator ul li ul {
   margin-top: .5em;
@@ -61,7 +64,7 @@ body {
   left: -16px;
   width: 10px;
   height: calc(100% + .75em);
-  border-left: 1px solid #3972b2;
+  border-left: 1px solid #3ff;
 }
  
 #lambda-evaluator ul li ul li:last-child::before {
@@ -74,7 +77,7 @@ body {
   top: .75em;
   left: -16px;
   width: 10px;
-  border-bottom: 1px solid #3972b2;
+  border-bottom: 1px solid #3ff;
 }
 
 
