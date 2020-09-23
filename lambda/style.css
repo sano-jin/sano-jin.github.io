@@ -5,15 +5,19 @@ body {
 }
 
 #lambda-evaluator {
+    text-align: center;
     margin: 40% auto;
     position: relative;
 }
 
 #lambda-evaluator *{
-    text-align: center;
     background: transparent;
     font-family: 'Inconsolata', monospace;
     color: #eee;
+}
+
+#states {
+    text-align: left;
 }
 
 #console {
