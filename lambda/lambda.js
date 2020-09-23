@@ -7397,7 +7397,7 @@ var $author$project$Main$view = function (model) {
 							]),
 						_List_fromArray(
 							[
-								$elm$html$Html$text('parse')
+								$elm$html$Html$text('run')
 							]))
 					])),
 				A2(
