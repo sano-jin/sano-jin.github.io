@@ -42,36 +42,34 @@ body {
     outline: none;
 }
 
-#lambda-evaluator ul {
+#states ul {
     list-style-type: none;
+    line-height: 1.25em;
 }
 
-#lambda-evaluator ul li ul {
-  margin-top: .5em;
-  margin-bottom: .75em;
-  margin-left: 48px;
+#states ul li ul { 
+  margin-left: 20px;
 }
  
-#lambda-evaluator ul li ul li {
-  margin-bottom: .25em;
+#states ul li ul li {
   position: relative;
 }
  
-#lambda-evaluator ul li ul li::before {
+#states ul li ul li::before {
   content: "";
   position: absolute;
-  top: -0.5em;
+  top: 0;
   left: -16px;
   width: 10px;
-  height: calc(100% + .75em);
+  height: calc(100%);
   border-left: 1px solid #3ff;
 }
  
-#lambda-evaluator ul li ul li:last-child::before {
-  height: calc(1em + .25em);
+#states ul li ul li:last-child::before {
+  height: calc(.75em);
 }
  
-#lambda-evaluator ul li ul li::after {
+#states ul li ul li::after {
   content: "";
   position: absolute;
   top: .75em;
@@ -80,6 +78,35 @@ body {
   border-bottom: 1px solid #3ff;
 }
 
+#states .back-edge::before {
+    content: "";
+    position: absolute;
+    top: -10px;
+    width: 0;
+    height: 0;
+    left: -20px;
+    border-top: 10px solid transparent;
+    border-right: 20px solid #3ff;
+    border-bottom: 10px solid transparent;
+}
+
+#states .back-edge {
+    border: 1px solid #3ff;
+    border-left: 0;
+    width: 10%;
+    bottom: .5em;
+    left: 80%;
+    position: absolute;
+}
+
+#states .back-edge::after {
+    border: 1px solid #3ff;
+    border-left: 0;
+    border-top: 0;
+    width: 10%;
+    bottom: .5em;
+    position: absolute;
+}
 
 
 @media only screen and (min-width: 601px) {
