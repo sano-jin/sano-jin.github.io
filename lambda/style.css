@@ -112,7 +112,7 @@ body {
 
 @media only screen and (min-width: 601px) {
     #lambda-evaluator *{
-	font-size: 28px;
+	/* font-size: 28px; */
     }
     #expression-reader {
 	min-width: 360px;
@@ -124,11 +124,11 @@ body {
 
 @media only screen and (max-width: 600px) {
     #console {
-	width: 100%;
+	width: 100%; 
     }
     
     #lambda-evaluator *{
-	font-size: 24px;
+	/* font-size: 24px; */
 	width: 100%;
     }
 }
