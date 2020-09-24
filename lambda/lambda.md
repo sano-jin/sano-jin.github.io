@@ -6,7 +6,6 @@ note: This interpreter (probably...) contains bugs. If you find any, feel free t
 
 - This is a simple lambda-calculus interpreter.
    - input an expression and press "run" to run. 
-   - [here](https://github.com/sano-jin/lambda.git) is the code (written in Elm). 
 
 <div id="myapp"></div>
 
@@ -17,14 +16,16 @@ note: This interpreter (probably...) contains bugs. If you find any, feel free t
   - Space is simpy ignored.
   - One charactor for each variable.
 - Acknowledgement
-  - This is heavily inspired by [lambda-friends](https://nikosai.ml/lambda-friends/)
+  - This is heavily inspired by [lambda-friends](https://nikosai.ml/lambda-friends/).
   - This not finished yet.
     - It probably contains bugs!
       - Please tell me if you find any.
     - I am trying to implement a graph drawing algorithm (instead of just showing a list like now).
       - Please wait.
+      - I know the design of this page sucks! :-)     
+- [Source code](https://github.com/sano-jin/lambda.git) (written in Elm). 
 - twitter[@sano65747676](https://twitter.com/sano65747676)
-
+  - Please feel free to contact me.
 
 <script>
   var app = Elm.Main.init({
