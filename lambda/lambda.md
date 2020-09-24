@@ -12,9 +12,9 @@ note: This interpreter (probably...) contains bugs. If you find any, feel free t
 
 - How to use
   - input an expression and press "run" to run. 
-  - to denote a lambda, you can use any one of "\", ™¥™ or ™λ™.
+  - to denote a lambda, you can use any one of `\`, `¥` or `λ`.
   - e.g.
-    - "(\sz.s(sz))(\sz.s(sz))" is as same as "(¥sz.s(sz))(λsz.s(sz))".
+    - `(\sz.s(sz))(\sz.s(sz))` is as same as `(¥sz.s(sz))(λsz.s(sz))`.
   - Space is simpy ignored.
   - One charactor for each variable.
 - This not finished yet.
