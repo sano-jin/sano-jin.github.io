@@ -2,6 +2,15 @@
 title: lambda calculus interpreter
 note: This interpreter (probably...) contains bugs. If you find any, feel free to tell me...
 ---
+<script src="lambda.js"></script>
+<div id="myapp"></div>
+<p> {{ page.note }} </p>
+<script>
+  var app = Elm.Main.init({
+    node: document.getElementById('myapp')
+  });
+</script>
+
 - This is a simple lambda-calculus interpreter.
   - Heavily inspired by [lambda-friends](https://nikosai.ml/lambda-friends/)
   - [here](https://github.com/sano-jin/lambda.git) is the code (written in Elm). 
@@ -17,12 +26,3 @@ note: This interpreter (probably...) contains bugs. If you find any, feel free t
   - I am trying to implement a graph drawing algorithm (instead of just showing a list like now).
     - Please wait.
 - twitter[@sano65747676](https://twitter.com/sano65747676)
-
-<script src="lambda.js"></script>
-<div id="myapp"></div>
-<p> {{ page.note }} </p>
-<script>
-  var app = Elm.Main.init({
-    node: document.getElementById('myapp')
-  });
-</script>
