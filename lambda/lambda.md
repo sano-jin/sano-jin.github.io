@@ -22,7 +22,7 @@ note: This interpreter (probably...) contains bugs. If you find any, feel free t
       - Please tell me if you find any.
     - I am trying to implement a graph drawing algorithm (instead of just showing a list like now).
       - Please wait.
-      - I know the design of this page sucks! :-)     
+    - I do know the design of this page sucks! :-)     
 - [Source code](https://github.com/sano-jin/lambda.git) (written in Elm). 
 - twitter[@sano65747676](https://twitter.com/sano65747676)
   - Please feel free to contact me.
