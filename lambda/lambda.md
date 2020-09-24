@@ -8,7 +8,7 @@ note: This interpreter (probably...) contains bugs. If you find any, feel free t
 - This not finished yet.
   - It probably contains bugs!
   - I am trying to implement graph drawing algorithm (instead of just showing list like now)
-   - Please wait
+    - Please wait
     
 <script src="lambda.js"></script>
 <div id="myapp"></div>
