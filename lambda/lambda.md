@@ -2,6 +2,8 @@
 title: lambda calculus interpreter
 note: This interpreter may (probably...) contain bugs.
 ---
+- This is a simple lambda-calculus interpreter.
+  - input an expression and press "run" to run. 
 <script src="lambda.js"></script>
 <div id="myapp"></div>
 <p> {{ page.note }} </p>
