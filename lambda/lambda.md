@@ -9,7 +9,8 @@ note: This interpreter (probably...) contains bugs. If you find any, feel free t
   - It probably contains bugs!
   - I am trying to implement a graph drawing algorithm (instead of just showing a list like now).
     - Please wait.
-    
+- twitter[@sano65747676](https://twitter.com/sano65747676)
+
 <script src="lambda.js"></script>
 <div id="myapp"></div>
 <p> {{ page.note }} </p>
