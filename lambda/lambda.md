@@ -2,11 +2,12 @@
 title: lambda calculus interpreter
 note: This interpreter (probably...) contains bugs. If you find any, feel free to tell me...
 ---
+<script src="lambda.js"></script>
+
 - This is a simple lambda-calculus interpreter.
   - Heavily inspired by [lambda-friends](https://nikosai.ml/lambda-friends/)
   - [here](https://github.com/sano-jin/lambda.git) is the code (written in Elm). 
 
-<script src="lambda.js"></script>
 <div id="myapp"></div>
 
 - How to use
