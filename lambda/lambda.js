@@ -519,11 +519,11 @@ function _Debug_crash_UNUSED(identifier, fact1, fact2, fact3, fact4)
 
 function _Debug_regionToString(region)
 {
-	if (region.R.H === region.X.H)
+	if (region.T.J === region.Z.J)
 	{
-		return 'on line ' + region.R.H;
+		return 'on line ' + region.T.J;
 	}
-	return 'on lines ' + region.R.H + ' through ' + region.X.H;
+	return 'on lines ' + region.T.J + ' through ' + region.Z.J;
 }
 
 
@@ -1857,9 +1857,9 @@ var _Platform_worker = F4(function(impl, flagDecoder, debugMetadata, args)
 	return _Platform_initialize(
 		flagDecoder,
 		args,
-		impl.aP,
+		impl.aR,
+		impl.a0,
 		impl.a_,
-		impl.aY,
 		function() { return function() {} }
 	);
 });
@@ -2704,9 +2704,9 @@ var _VirtualDom_mapEventTuple = F2(function(func, tuple)
 var _VirtualDom_mapEventRecord = F2(function(func, record)
 {
 	return {
-		u: func(record.u),
-		S: record.S,
-		P: record.P
+		w: func(record.w),
+		U: record.U,
+		R: record.R
 	}
 });
 
@@ -2974,11 +2974,11 @@ function _VirtualDom_makeCallback(eventNode, initialHandler)
 		// 3 = Custom
 
 		var value = result.a;
-		var message = !tag ? value : tag < 3 ? value.a : value.u;
-		var stopPropagation = tag == 1 ? value.b : tag == 3 && value.S;
+		var message = !tag ? value : tag < 3 ? value.a : value.w;
+		var stopPropagation = tag == 1 ? value.b : tag == 3 && value.U;
 		var currentEventNode = (
 			stopPropagation && event.stopPropagation(),
-			(tag == 2 ? value.b : tag == 3 && value.P) && event.preventDefault(),
+			(tag == 2 ? value.b : tag == 3 && value.R) && event.preventDefault(),
 			eventNode
 		);
 		var tagger;
@@ -3928,11 +3928,11 @@ var _Browser_element = _Debugger_element || F4(function(impl, flagDecoder, debug
 	return _Platform_initialize(
 		flagDecoder,
 		args,
-		impl.aP,
+		impl.aR,
+		impl.a0,
 		impl.a_,
-		impl.aY,
 		function(sendToApp, initialModel) {
-			var view = impl.a$;
+			var view = impl.a1;
 			/**/
 			var domNode = args['node'];
 			//*/
@@ -3964,12 +3964,12 @@ var _Browser_document = _Debugger_document || F4(function(impl, flagDecoder, deb
 	return _Platform_initialize(
 		flagDecoder,
 		args,
-		impl.aP,
+		impl.aR,
+		impl.a0,
 		impl.a_,
-		impl.aY,
 		function(sendToApp, initialModel) {
-			var divertHrefToApp = impl.Q && impl.Q(sendToApp)
-			var view = impl.a$;
+			var divertHrefToApp = impl.S && impl.S(sendToApp)
+			var view = impl.a1;
 			var title = _VirtualDom_doc.title;
 			var bodyNode = _VirtualDom_doc.body;
 			var currNode = _VirtualDom_virtualize(bodyNode);
@@ -3977,12 +3977,12 @@ var _Browser_document = _Debugger_document || F4(function(impl, flagDecoder, deb
 			{
 				_VirtualDom_divertHrefToApp = divertHrefToApp;
 				var doc = view(model);
-				var nextNode = _VirtualDom_node('body')(_List_Nil)(doc.aG);
+				var nextNode = _VirtualDom_node('body')(_List_Nil)(doc.aI);
 				var patches = _VirtualDom_diff(currNode, nextNode);
 				bodyNode = _VirtualDom_applyPatches(bodyNode, currNode, patches, sendToApp);
 				currNode = nextNode;
 				_VirtualDom_divertHrefToApp = 0;
-				(title !== doc.aZ) && (_VirtualDom_doc.title = title = doc.aZ);
+				(title !== doc.a$) && (_VirtualDom_doc.title = title = doc.a$);
 			});
 		}
 	);
@@ -4038,12 +4038,12 @@ function _Browser_makeAnimator(model, draw)
 
 function _Browser_application(impl)
 {
-	var onUrlChange = impl.aS;
-	var onUrlRequest = impl.aT;
+	var onUrlChange = impl.aU;
+	var onUrlRequest = impl.aV;
 	var key = function() { key.a(onUrlChange(_Browser_getUrl())); };
 
 	return _Browser_document({
-		Q: function(sendToApp)
+		S: function(sendToApp)
 		{
 			key.a = sendToApp;
 			_Browser_window.addEventListener('popstate', key);
@@ -4059,9 +4059,9 @@ function _Browser_application(impl)
 					var next = $elm$url$Url$fromString(href).a;
 					sendToApp(onUrlRequest(
 						(next
-							&& curr.ap === next.ap
-							&& curr.ad === next.ad
-							&& curr.am.a === next.am.a
+							&& curr.ar === next.ar
+							&& curr.af === next.af
+							&& curr.ao.a === next.ao.a
 						)
 							? $elm$browser$Browser$Internal(next)
 							: $elm$browser$Browser$External(href)
@@ -4069,13 +4069,13 @@ function _Browser_application(impl)
 				}
 			});
 		},
-		aP: function(flags)
+		aR: function(flags)
 		{
-			return A3(impl.aP, flags, _Browser_getUrl(), key);
+			return A3(impl.aR, flags, _Browser_getUrl(), key);
 		},
-		a$: impl.a$,
-		a_: impl.a_,
-		aY: impl.aY
+		a1: impl.a1,
+		a0: impl.a0,
+		a_: impl.a_
 	});
 }
 
@@ -4141,17 +4141,17 @@ var _Browser_decodeEvent = F2(function(decoder, event)
 function _Browser_visibilityInfo()
 {
 	return (typeof _VirtualDom_doc.hidden !== 'undefined')
-		? { aN: 'hidden', aH: 'visibilitychange' }
+		? { aP: 'hidden', aJ: 'visibilitychange' }
 		:
 	(typeof _VirtualDom_doc.mozHidden !== 'undefined')
-		? { aN: 'mozHidden', aH: 'mozvisibilitychange' }
+		? { aP: 'mozHidden', aJ: 'mozvisibilitychange' }
 		:
 	(typeof _VirtualDom_doc.msHidden !== 'undefined')
-		? { aN: 'msHidden', aH: 'msvisibilitychange' }
+		? { aP: 'msHidden', aJ: 'msvisibilitychange' }
 		:
 	(typeof _VirtualDom_doc.webkitHidden !== 'undefined')
-		? { aN: 'webkitHidden', aH: 'webkitvisibilitychange' }
-		: { aN: 'hidden', aH: 'visibilitychange' };
+		? { aP: 'webkitHidden', aJ: 'webkitvisibilitychange' }
+		: { aP: 'hidden', aJ: 'visibilitychange' };
 }
 
 
@@ -4232,12 +4232,12 @@ var _Browser_call = F2(function(functionName, id)
 function _Browser_getViewport()
 {
 	return {
-		au: _Browser_getScene(),
-		aA: {
-			aC: _Browser_window.pageXOffset,
-			aD: _Browser_window.pageYOffset,
-			aB: _Browser_doc.documentElement.clientWidth,
-			ab: _Browser_doc.documentElement.clientHeight
+		aw: _Browser_getScene(),
+		aC: {
+			aE: _Browser_window.pageXOffset,
+			aF: _Browser_window.pageYOffset,
+			aD: _Browser_doc.documentElement.clientWidth,
+			ad: _Browser_doc.documentElement.clientHeight
 		}
 	};
 }
@@ -4247,8 +4247,8 @@ function _Browser_getScene()
 	var body = _Browser_doc.body;
 	var elem = _Browser_doc.documentElement;
 	return {
-		aB: Math.max(body.scrollWidth, body.offsetWidth, elem.scrollWidth, elem.offsetWidth, elem.clientWidth),
-		ab: Math.max(body.scrollHeight, body.offsetHeight, elem.scrollHeight, elem.offsetHeight, elem.clientHeight)
+		aD: Math.max(body.scrollWidth, body.offsetWidth, elem.scrollWidth, elem.offsetWidth, elem.clientWidth),
+		ad: Math.max(body.scrollHeight, body.offsetHeight, elem.scrollHeight, elem.offsetHeight, elem.clientHeight)
 	};
 }
 
@@ -4271,15 +4271,15 @@ function _Browser_getViewportOf(id)
 	return _Browser_withNode(id, function(node)
 	{
 		return {
-			au: {
-				aB: node.scrollWidth,
-				ab: node.scrollHeight
+			aw: {
+				aD: node.scrollWidth,
+				ad: node.scrollHeight
 			},
-			aA: {
-				aC: node.scrollLeft,
-				aD: node.scrollTop,
-				aB: node.clientWidth,
-				ab: node.clientHeight
+			aC: {
+				aE: node.scrollLeft,
+				aF: node.scrollTop,
+				aD: node.clientWidth,
+				ad: node.clientHeight
 			}
 		};
 	});
@@ -4309,18 +4309,18 @@ function _Browser_getElement(id)
 		var x = _Browser_window.pageXOffset;
 		var y = _Browser_window.pageYOffset;
 		return {
-			au: _Browser_getScene(),
-			aA: {
-				aC: x,
-				aD: y,
-				aB: _Browser_doc.documentElement.clientWidth,
-				ab: _Browser_doc.documentElement.clientHeight
+			aw: _Browser_getScene(),
+			aC: {
+				aE: x,
+				aF: y,
+				aD: _Browser_doc.documentElement.clientWidth,
+				ad: _Browser_doc.documentElement.clientHeight
 			},
-			aL: {
-				aC: x + rect.left,
-				aD: y + rect.top,
-				aB: rect.width,
-				ab: rect.height
+			aN: {
+				aE: x + rect.left,
+				aF: y + rect.top,
+				aD: rect.width,
+				ad: rect.height
 			}
 		};
 	});
@@ -4566,7 +4566,7 @@ var $elm$core$Basics$EQ = 1;
 var $elm$core$Basics$GT = 2;
 var $elm$core$Basics$LT = 0;
 var $elm$core$Maybe$Nothing = {$: 1};
-var $author$project$Main$init = {F: _List_Nil, G: '(\\x.(\\y.xy)w)z', I: $elm$core$Maybe$Nothing};
+var $author$project$Main$init = {H: _List_Nil, I: '(\\x.(\\y.xy)w)z', K: $elm$core$Maybe$Nothing};
 var $elm$core$Result$Err = function (a) {
 	return {$: 1, a: a};
 };
@@ -4990,7 +4990,7 @@ var $elm$url$Url$Http = 0;
 var $elm$url$Url$Https = 1;
 var $elm$url$Url$Url = F6(
 	function (protocol, host, port_, path, query, fragment) {
-		return {aa: fragment, ad: host, ak: path, am: port_, ap: protocol, aq: query};
+		return {ac: fragment, af: host, am: path, ao: port_, ar: protocol, as: query};
 	});
 var $elm$core$String$contains = _String_contains;
 var $elm$core$String$length = _String_length;
@@ -5275,19 +5275,19 @@ var $elm$core$Platform$Sub$none = $elm$core$Platform$Sub$batch(_List_Nil);
 var $elm$browser$Browser$sandbox = function (impl) {
 	return _Browser_element(
 		{
-			aP: function (_v0) {
-				return _Utils_Tuple2(impl.aP, $elm$core$Platform$Cmd$none);
+			aR: function (_v0) {
+				return _Utils_Tuple2(impl.aR, $elm$core$Platform$Cmd$none);
 			},
-			aY: function (_v1) {
+			a_: function (_v1) {
 				return $elm$core$Platform$Sub$none;
 			},
-			a_: F2(
+			a0: F2(
 				function (msg, model) {
 					return _Utils_Tuple2(
-						A2(impl.a_, msg, model),
+						A2(impl.a0, msg, model),
 						$elm$core$Platform$Cmd$none);
 				}),
-			a$: impl.a$
+			a1: impl.a1
 		});
 };
 var $author$project$Lambda$AppVal = F2(
@@ -5821,37 +5821,33 @@ var $elm$core$Set$union = F2(
 		var dict2 = _v1;
 		return A2($elm$core$Dict$union, dict1, dict2);
 	});
-var $author$project$Lambda$lit2TFV = F2(
-	function (termLit, env) {
-		switch (termLit.$) {
-			case 0:
-				var x = termLit.a;
-				return {
-					i: $elm$core$Set$singleton(x),
-					l: $author$project$Lambda$VarVal(x)
-				};
-			case 1:
-				var t1 = termLit.a;
-				var t2 = termLit.b;
-				var tFV2 = A2($author$project$Lambda$lit2TFV, t2, env);
-				var tFV1 = A2($author$project$Lambda$lit2TFV, t1, env);
-				return {
-					i: A2($elm$core$Set$union, tFV1.i, tFV2.i),
-					l: A2($author$project$Lambda$AppVal, tFV1, tFV2)
-				};
-			default:
-				var _var = termLit.a;
-				var body = termLit.b;
-				var bTFV = A2(
-					$author$project$Lambda$lit2TFV,
-					body,
-					A2($elm$core$List$cons, _var, env));
-				return {
-					i: A2($elm$core$Set$remove, _var, bTFV.i),
-					l: A2($author$project$Lambda$LamVal, _var, bTFV)
-				};
-		}
-	});
+var $author$project$Lambda$lit2TFV = function (termLit) {
+	switch (termLit.$) {
+		case 0:
+			var x = termLit.a;
+			return {
+				i: $elm$core$Set$singleton(x),
+				m: $author$project$Lambda$VarVal(x)
+			};
+		case 1:
+			var t1 = termLit.a;
+			var t2 = termLit.b;
+			var tFV2 = $author$project$Lambda$lit2TFV(t2);
+			var tFV1 = $author$project$Lambda$lit2TFV(t1);
+			return {
+				i: A2($elm$core$Set$union, tFV1.i, tFV2.i),
+				m: A2($author$project$Lambda$AppVal, tFV1, tFV2)
+			};
+		default:
+			var _var = termLit.a;
+			var body = termLit.b;
+			var bTFV = $author$project$Lambda$lit2TFV(body);
+			return {
+				i: A2($elm$core$Set$remove, _var, bTFV.i),
+				m: A2($author$project$Lambda$LamVal, _var, bTFV)
+			};
+	}
+};
 var $elm$parser$Parser$ExpectingEnd = {$: 10};
 var $elm$parser$Parser$Advanced$Bad = F2(
 	function (a, b) {
@@ -5868,7 +5864,7 @@ var $elm$parser$Parser$Advanced$AddRight = F2(
 	});
 var $elm$parser$Parser$Advanced$DeadEnd = F4(
 	function (row, col, problem, contextStack) {
-		return {aI: col, aJ: contextStack, aV: problem, aX: row};
+		return {aK: col, aL: contextStack, aX: problem, aZ: row};
 	});
 var $elm$parser$Parser$Advanced$Empty = {$: 0};
 var $elm$parser$Parser$Advanced$fromState = F2(
@@ -5876,7 +5872,7 @@ var $elm$parser$Parser$Advanced$fromState = F2(
 		return A2(
 			$elm$parser$Parser$Advanced$AddRight,
 			$elm$parser$Parser$Advanced$Empty,
-			A4($elm$parser$Parser$Advanced$DeadEnd, s.aX, s.aI, x, s.c));
+			A4($elm$parser$Parser$Advanced$DeadEnd, s.aZ, s.aK, x, s.c));
 	});
 var $elm$parser$Parser$Advanced$end = function (x) {
 	return function (s) {
@@ -5949,7 +5945,7 @@ var $elm$parser$Parser$Advanced$chompWhileHelp = F5(
 					$elm$parser$Parser$Advanced$Good,
 					_Utils_cmp(s0.b, offset) < 0,
 					0,
-					{aI: col, c: s0.c, d: s0.d, b: offset, aX: row, a: s0.a});
+					{aK: col, c: s0.c, d: s0.d, b: offset, aZ: row, a: s0.a});
 			} else {
 				if (_Utils_eq(newOffset, -2)) {
 					var $temp$isGood = isGood,
@@ -5981,7 +5977,7 @@ var $elm$parser$Parser$Advanced$chompWhileHelp = F5(
 	});
 var $elm$parser$Parser$Advanced$chompWhile = function (isGood) {
 	return function (s) {
-		return A5($elm$parser$Parser$Advanced$chompWhileHelp, isGood, s.b, s.aX, s.aI, s);
+		return A5($elm$parser$Parser$Advanced$chompWhileHelp, isGood, s.b, s.aZ, s.aK, s);
 	};
 };
 var $elm$parser$Parser$Advanced$spaces = $elm$parser$Parser$Advanced$chompWhile(
@@ -6118,7 +6114,7 @@ var $elm$parser$Parser$Advanced$token = function (_v0) {
 	var expecting = _v0.b;
 	var progress = !$elm$core$String$isEmpty(str);
 	return function (s) {
-		var _v1 = A5($elm$parser$Parser$Advanced$isSubString, str, s.b, s.aX, s.aI, s.a);
+		var _v1 = A5($elm$parser$Parser$Advanced$isSubString, str, s.b, s.aZ, s.aK, s.a);
 		var newOffset = _v1.a;
 		var newRow = _v1.b;
 		var newCol = _v1.c;
@@ -6129,7 +6125,7 @@ var $elm$parser$Parser$Advanced$token = function (_v0) {
 			$elm$parser$Parser$Advanced$Good,
 			progress,
 			0,
-			{aI: newCol, c: s.c, d: s.d, b: newOffset, aX: newRow, a: s.a});
+			{aK: newCol, c: s.c, d: s.d, b: newOffset, aZ: newRow, a: s.a});
 	};
 };
 var $elm$parser$Parser$Advanced$symbol = $elm$parser$Parser$Advanced$token;
@@ -6274,11 +6270,11 @@ var $elm$parser$Parser$Advanced$chompIf = F2(
 				$elm$parser$Parser$Advanced$Good,
 				true,
 				0,
-				{aI: 1, c: s.c, d: s.d, b: s.b + 1, aX: s.aX + 1, a: s.a}) : A3(
+				{aK: 1, c: s.c, d: s.d, b: s.b + 1, aZ: s.aZ + 1, a: s.a}) : A3(
 				$elm$parser$Parser$Advanced$Good,
 				true,
 				0,
-				{aI: s.aI + 1, c: s.c, d: s.d, b: newOffset, aX: s.aX, a: s.a}));
+				{aK: s.aK + 1, c: s.c, d: s.d, b: newOffset, aZ: s.aZ, a: s.a}));
 		};
 	});
 var $elm$parser$Parser$chompIf = function (isGood) {
@@ -6436,10 +6432,10 @@ var $author$project$LambdaParser$parser = A2(
 	A2($elm$parser$Parser$ignorer, $author$project$LambdaParser$termLit, $elm$parser$Parser$end));
 var $elm$parser$Parser$DeadEnd = F3(
 	function (row, col, problem) {
-		return {aI: col, aV: problem, aX: row};
+		return {aK: col, aX: problem, aZ: row};
 	});
 var $elm$parser$Parser$problemToDeadEnd = function (p) {
-	return A3($elm$parser$Parser$DeadEnd, p.aX, p.aI, p.aV);
+	return A3($elm$parser$Parser$DeadEnd, p.aZ, p.aK, p.aX);
 };
 var $elm$parser$Parser$Advanced$bagToList = F2(
 	function (bag, list) {
@@ -6471,7 +6467,7 @@ var $elm$parser$Parser$Advanced$run = F2(
 	function (_v0, src) {
 		var parse = _v0;
 		var _v1 = parse(
-			{aI: 1, c: _List_Nil, d: 1, b: 0, aX: 1, a: src});
+			{aK: 1, c: _List_Nil, d: 1, b: 0, aZ: 1, a: src});
 		if (!_v1.$) {
 			var value = _v1.b;
 			return $elm$core$Result$Ok(value);
@@ -6546,6 +6542,14 @@ var $elm$core$Dict$get = F2(
 			}
 		}
 	});
+var $elm$core$Tuple$mapFirst = F2(
+	function (func, _v0) {
+		var x = _v0.a;
+		var y = _v0.b;
+		return _Utils_Tuple2(
+			func(x),
+			y);
+	});
 var $elm$core$Dict$member = F2(
 	function (key, dict) {
 		var _v0 = A2($elm$core$Dict$get, key, dict);
@@ -6559,6 +6563,10 @@ var $elm$core$Set$member = F2(
 	function (key, _v0) {
 		var dict = _v0;
 		return A2($elm$core$Dict$member, key, dict);
+	});
+var $elm$core$Tuple$pair = F2(
+	function (a, b) {
+		return _Utils_Tuple2(a, b);
 	});
 var $elm$core$Basics$composeL = F3(
 	function (g, f, x) {
@@ -6609,7 +6617,7 @@ var $author$project$Lambda$newVar = F2(
 	});
 var $author$project$Lambda$substitute = F3(
 	function (_var, termAndFV1, termAndFV2) {
-		var _v0 = termAndFV1.l;
+		var _v0 = termAndFV1.m;
 		switch (_v0.$) {
 			case 0:
 				var x = _v0.a;
@@ -6624,7 +6632,7 @@ var $author$project$Lambda$substitute = F3(
 				var val_ = _v1.b;
 				return {
 					i: A2($elm$core$Set$union, fun_.i, val_.i),
-					l: A2($author$project$Lambda$AppVal, fun_, val_)
+					m: A2($author$project$Lambda$AppVal, fun_, val_)
 				};
 			default:
 				var x = _v0.a;
@@ -6646,7 +6654,7 @@ var $author$project$Lambda$substitute = F3(
 									body,
 									{
 										i: $elm$core$Set$singleton(z),
-										l: $author$project$Lambda$VarVal(z)
+										m: $author$project$Lambda$VarVal(z)
 									}));
 						} else {
 							return _Utils_Tuple2(x, body);
@@ -6657,39 +6665,38 @@ var $author$project$Lambda$substitute = F3(
 					var body__ = A3($author$project$Lambda$substitute, _var, body_, termAndFV2);
 					return {
 						i: A2($elm$core$Set$remove, x_, body__.i),
-						l: A2($author$project$Lambda$LamVal, x_, body__)
+						m: A2($author$project$Lambda$LamVal, x_, body__)
 					};
 				}
 		}
 	});
-var $author$project$Lambda$getIndex = F2(
-	function (x, list) {
-		var getIndexHelp = F2(
-			function (l, i) {
-				getIndexHelp:
-				while (true) {
-					if (!l.b) {
-						return $elm$core$Maybe$Nothing;
+var $author$project$Lambda$getIndex = function (x) {
+	var getIndexHelp = F2(
+		function (i, list) {
+			getIndexHelp:
+			while (true) {
+				if (!list.b) {
+					return $elm$core$Maybe$Nothing;
+				} else {
+					var h = list.a;
+					var t = list.b;
+					if (_Utils_eq(h, x)) {
+						return $elm$core$Maybe$Just(i);
 					} else {
-						var h = l.a;
-						var t = l.b;
-						if (_Utils_eq(h, x)) {
-							return $elm$core$Maybe$Just(i);
-						} else {
-							var $temp$l = t,
-								$temp$i = i + 1;
-							l = $temp$l;
-							i = $temp$i;
-							continue getIndexHelp;
-						}
+						var $temp$i = i + 1,
+							$temp$list = t;
+						i = $temp$i;
+						list = $temp$list;
+						continue getIndexHelp;
 					}
 				}
-			});
-		return A2(getIndexHelp, list, 0);
-	});
+			}
+		});
+	return getIndexHelp(0);
+};
 var $author$project$Lambda$toPostfixNotation = F2(
 	function (tFV, env) {
-		var _v0 = tFV.l;
+		var _v0 = tFV.m;
 		switch (_v0.$) {
 			case 0:
 				var x = _v0.a;
@@ -6724,7 +6731,7 @@ var $author$project$VM$goUpTerm = function (zipper) {
 				return _Utils_Tuple2(
 					{
 						i: A2($elm$core$Set$union, l.i, r.i),
-						l: A2($author$project$Lambda$AppVal, l, r)
+						m: A2($author$project$Lambda$AppVal, l, r)
 					},
 					bs);
 			case 1:
@@ -6735,7 +6742,7 @@ var $author$project$VM$goUpTerm = function (zipper) {
 				return _Utils_Tuple2(
 					{
 						i: A2($elm$core$Set$union, l.i, r.i),
-						l: A2($author$project$Lambda$AppVal, l, r)
+						m: A2($author$project$Lambda$AppVal, l, r)
 					},
 					bs);
 			default:
@@ -6746,7 +6753,7 @@ var $author$project$VM$goUpTerm = function (zipper) {
 				return _Utils_Tuple2(
 					{
 						i: A2($elm$core$Set$remove, _var, body.i),
-						l: A2($author$project$Lambda$LamVal, _var, body)
+						m: A2($author$project$Lambda$LamVal, _var, body)
 					},
 					bs);
 		}
@@ -6769,207 +6776,187 @@ var $author$project$VM$topMostTerm = function (zipper) {
 		}
 	}
 };
-var $author$project$VM$betaTrans = F6(
-	function (_var, body, val, termPath, statesDict, stateIndex) {
+var $author$project$VM$update = F4(
+	function (f, g, h, s) {
+		var _v0 = f(s);
+		var a = _v0.a;
+		var s_ = _v0.b;
+		var _v1 = g(s_);
+		var b = _v1.a;
+		var s__ = _v1.b;
+		return _Utils_Tuple2(
+			A2(h, a, b),
+			s__);
+	});
+var $author$project$VM$betaTrans = F5(
+	function (_var, body, val, termPath, states) {
 		var evaluedTerm = A3($author$project$Lambda$substitute, _var, body, val);
-		var _v13 = $author$project$VM$topMostTerm(
+		var _v6 = $author$project$VM$topMostTerm(
 			_Utils_Tuple2(evaluedTerm, termPath));
-		var evalued = _v13.a;
+		var evalued = _v6.a;
 		var postfix = A2($author$project$Lambda$toPostfixNotation, evalued, _List_Nil);
-		var _v14 = A2($elm$core$Dict$get, postfix, statesDict);
-		if (_v14.$ === 1) {
-			var _v15 = A3(
-				$author$project$VM$eval,
-				_Utils_Tuple2(evalued, _List_Nil),
-				A3($elm$core$Dict$insert, postfix, stateIndex, statesDict),
-				stateIndex + 1);
-			var children = _v15.a;
-			var statesDict_ = _v15.b;
-			var stateIndex_ = _v15.c;
-			return _Utils_Tuple3(
-				A2($author$project$VM$State, evalued, children),
-				statesDict_,
-				stateIndex_);
+		var _v7 = A2($elm$core$Dict$get, postfix, states.v);
+		if (_v7.$ === 1) {
+			return A2(
+				$elm$core$Tuple$mapFirst,
+				$author$project$VM$State(evalued),
+				A2(
+					$author$project$VM$eval,
+					_Utils_Tuple2(evalued, _List_Nil),
+					{
+						v: A3($elm$core$Dict$insert, postfix, states.k, states.v),
+						k: states.k + 1
+					}));
 		} else {
-			var i = _v14.a;
-			return _Utils_Tuple3(
-				$author$project$VM$Join(stateIndex - i),
-				statesDict,
-				stateIndex + 1);
+			var i = _v7.a;
+			return _Utils_Tuple2(
+				$author$project$VM$Join(states.k - i),
+				_Utils_update(
+					states,
+					{k: states.k + 1}));
 		}
 	});
-var $author$project$VM$etaTrans = F4(
-	function (fun, termPath, statesDict, stateIndex) {
-		var _v10 = $author$project$VM$topMostTerm(
+var $author$project$VM$etaTrans = F3(
+	function (fun, termPath, states) {
+		var _v4 = $author$project$VM$topMostTerm(
 			_Utils_Tuple2(fun, termPath));
-		var term = _v10.a;
+		var term = _v4.a;
 		var postfix = A2($author$project$Lambda$toPostfixNotation, term, _List_Nil);
-		var _v11 = A2($elm$core$Dict$get, postfix, statesDict);
-		if (_v11.$ === 1) {
-			var _v12 = A3(
-				$author$project$VM$eval,
-				_Utils_Tuple2(term, _List_Nil),
-				A3($elm$core$Dict$insert, postfix, stateIndex, statesDict),
-				stateIndex + 1);
-			var children = _v12.a;
-			var statesDict_ = _v12.b;
-			var stateIndex_ = _v12.c;
-			return _Utils_Tuple3(
-				A2($author$project$VM$State, term, children),
-				statesDict_,
-				stateIndex_);
+		var _v5 = A2($elm$core$Dict$get, postfix, states.v);
+		if (_v5.$ === 1) {
+			return A2(
+				$elm$core$Tuple$mapFirst,
+				$author$project$VM$State(term),
+				A2(
+					$author$project$VM$eval,
+					_Utils_Tuple2(term, _List_Nil),
+					{
+						v: A3($elm$core$Dict$insert, postfix, states.k, states.v),
+						k: states.k + 1
+					}));
 		} else {
-			var i = _v11.a;
-			return _Utils_Tuple3(
-				$author$project$VM$Join(stateIndex - i),
-				statesDict,
-				stateIndex + 1);
+			var i = _v5.a;
+			return _Utils_Tuple2(
+				$author$project$VM$Join(states.k - i),
+				_Utils_update(
+					states,
+					{k: states.k + 1}));
 		}
 	});
-var $author$project$VM$eval = F3(
-	function (_v2, statesDict, stateIndex) {
-		_eval:
-		while (true) {
-			var termAndFV = _v2.a;
-			var termPath = _v2.b;
-			var _v3 = termAndFV.l;
-			switch (_v3.$) {
-				case 1:
+var $author$project$VM$eval = function (_v0) {
+	_eval:
+	while (true) {
+		var termAndFV = _v0.a;
+		var termPath = _v0.b;
+		var _v1 = termAndFV.m;
+		switch (_v1.$) {
+			case 1:
+				var fun = _v1.a;
+				var val = _v1.b;
+				var _v2 = fun.m;
+				if (_v2.$ === 2) {
+					var _var = _v2.a;
+					var body = _v2.b;
+					return A3(
+						$author$project$VM$update,
+						A4($author$project$VM$betaTrans, _var, body, val, termPath),
+						A3($author$project$VM$evalChildren, fun, val, termPath),
+						F2(
+							function (e, es) {
+								return A2(
+									$elm$core$List$cons,
+									$author$project$VM$BetaTrans(e),
+									es);
+							}));
+				} else {
+					return A3($author$project$VM$evalChildren, fun, val, termPath);
+				}
+			case 2:
+				var _var = _v1.a;
+				var body = _v1.b;
+				var _v3 = body.m;
+				if (_v3.$ === 1) {
 					var fun = _v3.a;
 					var val = _v3.b;
-					var _v4 = fun.l;
-					if (_v4.$ === 2) {
-						var _var = _v4.a;
-						var body = _v4.b;
-						var _v5 = A6($author$project$VM$betaTrans, _var, body, val, termPath, statesDict, stateIndex);
-						var evalued = _v5.a;
-						var statesDict_ = _v5.b;
-						var stateIndex_ = _v5.c;
-						var _v6 = A5($author$project$VM$evalChildren, fun, val, termPath, statesDict_, stateIndex_);
-						var children = _v6.a;
-						var statesDict__ = _v6.b;
-						var stateIndex__ = _v6.c;
-						return _Utils_Tuple3(
-							A2(
-								$elm$core$List$cons,
-								$author$project$VM$BetaTrans(evalued),
-								children),
-							statesDict__,
-							stateIndex__);
-					} else {
-						return A5($author$project$VM$evalChildren, fun, val, termPath, statesDict, stateIndex);
-					}
-				case 2:
-					var _var = _v3.a;
-					var body = _v3.b;
-					var _v7 = body.l;
-					if (_v7.$ === 1) {
-						var fun = _v7.a;
-						var val = _v7.b;
-						if (_Utils_eq(
-							val.l,
-							$author$project$Lambda$VarVal(_var)) && (!A2($elm$core$Set$member, _var, fun.i))) {
-							var _v8 = A4($author$project$VM$etaTrans, fun, termPath, statesDict, stateIndex);
-							var evalued = _v8.a;
-							var statesDict_ = _v8.b;
-							var stateIndex_ = _v8.c;
-							var _v9 = A3(
-								$author$project$VM$eval,
+					if (_Utils_eq(
+						val.m,
+						$author$project$Lambda$VarVal(_var)) && (!A2($elm$core$Set$member, _var, fun.i))) {
+						return A3(
+							$author$project$VM$update,
+							A2($author$project$VM$etaTrans, fun, termPath),
+							$author$project$VM$eval(
 								_Utils_Tuple2(
 									body,
 									A2(
 										$elm$core$List$cons,
 										$author$project$VM$LamCrumb(_var),
-										termPath)),
-								statesDict_,
-								stateIndex_);
-							var children = _v9.a;
-							var statesDict__ = _v9.b;
-							var stateIndex__ = _v9.c;
-							return _Utils_Tuple3(
-								A2(
-									$elm$core$List$cons,
-									$author$project$VM$EtaTrans(evalued),
-									children),
-								statesDict__,
-								stateIndex__);
-						} else {
-							var $temp$_v2 = _Utils_Tuple2(
-								body,
-								A2(
-									$elm$core$List$cons,
-									$author$project$VM$LamCrumb(_var),
-									termPath)),
-								$temp$statesDict = statesDict,
-								$temp$stateIndex = stateIndex;
-							_v2 = $temp$_v2;
-							statesDict = $temp$statesDict;
-							stateIndex = $temp$stateIndex;
-							continue _eval;
-						}
+										termPath))),
+							F2(
+								function (e, es) {
+									return A2(
+										$elm$core$List$cons,
+										$author$project$VM$EtaTrans(e),
+										es);
+								}));
 					} else {
-						var $temp$_v2 = _Utils_Tuple2(
+						var $temp$_v0 = _Utils_Tuple2(
 							body,
 							A2(
 								$elm$core$List$cons,
 								$author$project$VM$LamCrumb(_var),
-								termPath)),
-							$temp$statesDict = statesDict,
-							$temp$stateIndex = stateIndex;
-						_v2 = $temp$_v2;
-						statesDict = $temp$statesDict;
-						stateIndex = $temp$stateIndex;
+								termPath));
+						_v0 = $temp$_v0;
 						continue _eval;
 					}
-				default:
-					return _Utils_Tuple3(_List_Nil, statesDict, stateIndex);
-			}
+				} else {
+					var $temp$_v0 = _Utils_Tuple2(
+						body,
+						A2(
+							$elm$core$List$cons,
+							$author$project$VM$LamCrumb(_var),
+							termPath));
+					_v0 = $temp$_v0;
+					continue _eval;
+				}
+			default:
+				return $elm$core$Tuple$pair(_List_Nil);
 		}
-	});
-var $author$project$VM$evalChildren = F5(
-	function (fun, val, termPath, statesDict, stateIndex) {
-		var _v0 = A3(
-			$author$project$VM$eval,
-			_Utils_Tuple2(
-				fun,
-				A2(
-					$elm$core$List$cons,
-					$author$project$VM$AppLeftCrumb(val),
-					termPath)),
-			statesDict,
-			stateIndex);
-		var funChildren = _v0.a;
-		var funStatesDict = _v0.b;
-		var funStateIndex = _v0.c;
-		var _v1 = A3(
-			$author$project$VM$eval,
-			_Utils_Tuple2(
-				val,
-				A2(
-					$elm$core$List$cons,
-					$author$project$VM$AppRightCrumb(fun),
-					termPath)),
-			funStatesDict,
-			funStateIndex);
-		var valChildren = _v1.a;
-		var valStatesDict = _v1.b;
-		var valStateIndex = _v1.c;
-		return _Utils_Tuple3(
-			_Utils_ap(funChildren, valChildren),
-			valStatesDict,
-			valStateIndex);
+	}
+};
+var $author$project$VM$evalChildren = F3(
+	function (fun, val, termPath) {
+		return A3(
+			$author$project$VM$update,
+			$author$project$VM$eval(
+				_Utils_Tuple2(
+					fun,
+					A2(
+						$elm$core$List$cons,
+						$author$project$VM$AppLeftCrumb(val),
+						termPath))),
+			$author$project$VM$eval(
+				_Utils_Tuple2(
+					val,
+					A2(
+						$elm$core$List$cons,
+						$author$project$VM$AppRightCrumb(fun),
+						termPath))),
+			$elm$core$Basics$append);
 	});
 var $author$project$VM$vm = function (termAndFV) {
-	var _v0 = A3(
-		$author$project$VM$eval,
-		_Utils_Tuple2(termAndFV, _List_Nil),
+	return A2(
+		$author$project$VM$State,
+		termAndFV,
 		A2(
-			$elm$core$Dict$singleton,
-			A2($author$project$Lambda$toPostfixNotation, termAndFV, _List_Nil),
-			0),
-		0);
-	var children = _v0.a;
-	return A2($author$project$VM$State, termAndFV, children);
+			$author$project$VM$eval,
+			_Utils_Tuple2(termAndFV, _List_Nil),
+			{
+				v: A2(
+					$elm$core$Dict$singleton,
+					A2($author$project$Lambda$toPostfixNotation, termAndFV, _List_Nil),
+					0),
+				k: 1
+			}).a);
 };
 var $author$project$Main$update = F2(
 	function (msg, model) {
@@ -6981,22 +6968,22 @@ var $author$project$Main$update = F2(
 				return _Utils_update(
 					model,
 					{
-						F: _List_Nil,
-						I: $elm$core$Maybe$Just(
+						H: _List_Nil,
+						K: $elm$core$Maybe$Just(
 							$author$project$VM$vm(
-								A2($author$project$Lambda$lit2TFV, term, _List_Nil)))
+								$author$project$Lambda$lit2TFV(term)))
 					});
 			} else {
 				var err = _v1.a;
 				return _Utils_update(
 					model,
-					{F: err, I: $elm$core$Maybe$Nothing});
+					{H: err, K: $elm$core$Maybe$Nothing});
 			}
 		} else {
 			var str = msg.a;
 			return _Utils_update(
 				model,
-				{G: str});
+				{I: str});
 		}
 	});
 var $author$project$Main$Change = function (a) {
@@ -7123,7 +7110,7 @@ var $elm$html$Html$Attributes$value = $elm$html$Html$Attributes$stringProperty('
 var $elm$core$String$fromFloat = _String_fromNumber;
 var $elm$html$Html$li = _VirtualDom_node('li');
 var $author$project$Lambda$showAppFun = function (tFV) {
-	var _v3 = tFV.l;
+	var _v3 = tFV.m;
 	if (_v3.$ === 2) {
 		var _var = _v3.a;
 		var body = _v3.b;
@@ -7133,7 +7120,7 @@ var $author$project$Lambda$showAppFun = function (tFV) {
 	}
 };
 var $author$project$Lambda$showAppVal = function (tFV) {
-	var _v2 = tFV.l;
+	var _v2 = tFV.m;
 	switch (_v2.$) {
 		case 0:
 			return $author$project$Lambda$showT(tFV);
@@ -7148,7 +7135,7 @@ var $author$project$Lambda$showAppVal = function (tFV) {
 	}
 };
 var $author$project$Lambda$showCurriedAbs = function (tFV) {
-	var _v1 = tFV.l;
+	var _v1 = tFV.m;
 	if (_v1.$ === 2) {
 		var _var = _v1.a;
 		var body = _v1.b;
@@ -7160,7 +7147,7 @@ var $author$project$Lambda$showCurriedAbs = function (tFV) {
 	}
 };
 var $author$project$Lambda$showT = function (tFV) {
-	var _v0 = tFV.l;
+	var _v0 = tFV.m;
 	switch (_v0.$) {
 		case 0:
 			var x = _v0.a;
@@ -7279,7 +7266,7 @@ var $author$project$Main$view = function (model) {
 							[
 								$elm$html$Html$Attributes$class('reader'),
 								$elm$html$Html$Attributes$placeholder('input lambda expression \u23CE'),
-								$elm$html$Html$Attributes$value(model.G),
+								$elm$html$Html$Attributes$value(model.I),
 								$elm$html$Html$Events$onInput($author$project$Main$Change)
 							]),
 						_List_Nil),
@@ -7289,7 +7276,7 @@ var $author$project$Main$view = function (model) {
 							[
 								$elm$html$Html$Attributes$class('submitter'),
 								$elm$html$Html$Events$onClick(
-								$author$project$Main$Eval(model.G))
+								$author$project$Main$Eval(model.I))
 							]),
 						_List_fromArray(
 							[
@@ -7311,18 +7298,18 @@ var $author$project$Main$view = function (model) {
 							_List_fromArray(
 								[
 									$elm$html$Html$text(
-									$author$project$LambdaParser$problem2String(err.aV)),
+									$author$project$LambdaParser$problem2String(err.aX)),
 									A2(
 									$elm$html$Html$div,
 									_List_Nil,
 									_List_fromArray(
 										[
 											$elm$html$Html$text(
-											'at row: ' + ($elm$core$String$fromInt(err.aX) + (', col: ' + $elm$core$String$fromInt(err.aI))))
+											'at row: ' + ($elm$core$String$fromInt(err.aZ) + (', col: ' + $elm$core$String$fromInt(err.aK))))
 										]))
 								]));
 					},
-					model.F)),
+					model.H)),
 				A2(
 				$elm$html$Html$div,
 				_List_fromArray(
@@ -7332,7 +7319,7 @@ var $author$project$Main$view = function (model) {
 				_List_fromArray(
 					[
 						function () {
-						var _v0 = model.I;
+						var _v0 = model.K;
 						if (_v0.$ === 1) {
 							return $elm$html$Html$text('...');
 						} else {
@@ -7350,6 +7337,6 @@ var $author$project$Main$view = function (model) {
 			]));
 };
 var $author$project$Main$main = $elm$browser$Browser$sandbox(
-	{aP: $author$project$Main$init, a_: $author$project$Main$update, a$: $author$project$Main$view});
+	{aR: $author$project$Main$init, a0: $author$project$Main$update, a1: $author$project$Main$view});
 _Platform_export({'Main':{'init':$author$project$Main$main(
 	$elm$json$Json$Decode$succeed(0))(0)}});}(this));
