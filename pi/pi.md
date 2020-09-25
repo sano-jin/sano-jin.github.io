@@ -1,7 +1,7 @@
 ---
 title: pi calculus interpreter
 ---
-<script src="lambda.js"></script>
+<script src="pi.js"></script>
 
 - This is still in the middle of implementation.
   - You CANNOT use this. Please wait...
