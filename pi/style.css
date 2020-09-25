@@ -1,7 +1,9 @@
 body {
+    /* 
     background-image: url("background.png");
     background-repeat: no-repeat;
     background-color: #171717;
+    */
 }
 
 .interpreter {
@@ -13,7 +15,9 @@ body {
 .interpreter *{
     background: transparent;
     font-family: 'Inconsolata', monospace;
+    /*
     color: #eee;
+   */
 }
 
 .states {
@@ -24,7 +28,9 @@ body {
 }
     
 .interpreter .console .reader::placeholder {
-  color: #999;
+    /*
+    color: #999;
+   */
 }
 
 .interpreter .console .reader {
