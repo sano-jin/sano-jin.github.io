@@ -13,11 +13,11 @@ title: pi calculus interpreter
 
 - Syntax (according to Wikipedia)
   - `P`, `Q` =
-    - `x!y.P` (Send the value y over channel x, then run P)
+    - `x!y` (Send the value y over channel x)
     - `x?y.P` (Receive on channel x, bind the result to y, then run P)
     - `P|Q` (run P and Q simultaneously)
     - `\x.P` (create a new channel x and run P)
-    - `!P` (Repeatedly spawn copys of P)
+    - `!P` (NOT implemented yet. Repeatedly spawn copys of P)
     - `0` (Terminate the process)
 - How to use
 - Acknowledgement
