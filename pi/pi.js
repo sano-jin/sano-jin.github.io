@@ -4565,7 +4565,7 @@ var $elm$core$Set$toList = function (_v0) {
 var $elm$core$Basics$EQ = 1;
 var $elm$core$Basics$GT = 2;
 var $elm$core$Basics$LT = 0;
-var $author$project$Main$init = {L: _List_Nil, D: '', E: '0', G: _List_Nil};
+var $author$project$Main$init = {L: _List_Nil, D: '', E: 'x?y.y!w|z?u.0|\\z.(z?v.0|x!z)', G: _List_Nil};
 var $elm$core$Result$Err = function (a) {
 	return {$: 1, a: a};
 };
