@@ -519,11 +519,11 @@ function _Debug_crash_UNUSED(identifier, fact1, fact2, fact3, fact4)
 
 function _Debug_regionToString(region)
 {
-	if (region.aW.F === region.W.F)
+	if (region.aW.G === region.V.G)
 	{
-		return 'on line ' + region.aW.F;
+		return 'on line ' + region.aW.G;
 	}
-	return 'on lines ' + region.aW.F + ' through ' + region.W.F;
+	return 'on lines ' + region.aW.G + ' through ' + region.V.G;
 }
 
 
@@ -1857,7 +1857,7 @@ var _Platform_worker = F4(function(impl, flagDecoder, debugMetadata, args)
 	return _Platform_initialize(
 		flagDecoder,
 		args,
-		impl.aN,
+		impl.aL,
 		impl.aZ,
 		impl.aX,
 		function() { return function() {} }
@@ -3928,7 +3928,7 @@ var _Browser_element = _Debugger_element || F4(function(impl, flagDecoder, debug
 	return _Platform_initialize(
 		flagDecoder,
 		args,
-		impl.aN,
+		impl.aL,
 		impl.aZ,
 		impl.aX,
 		function(sendToApp, initialModel) {
@@ -3964,7 +3964,7 @@ var _Browser_document = _Debugger_document || F4(function(impl, flagDecoder, deb
 	return _Platform_initialize(
 		flagDecoder,
 		args,
-		impl.aN,
+		impl.aL,
 		impl.aZ,
 		impl.aX,
 		function(sendToApp, initialModel) {
@@ -3977,7 +3977,7 @@ var _Browser_document = _Debugger_document || F4(function(impl, flagDecoder, deb
 			{
 				_VirtualDom_divertHrefToApp = divertHrefToApp;
 				var doc = view(model);
-				var nextNode = _VirtualDom_node('body')(_List_Nil)(doc.aF);
+				var nextNode = _VirtualDom_node('body')(_List_Nil)(doc.aC);
 				var patches = _VirtualDom_diff(currNode, nextNode);
 				bodyNode = _VirtualDom_applyPatches(bodyNode, currNode, patches, sendToApp);
 				currNode = nextNode;
@@ -4038,8 +4038,8 @@ function _Browser_makeAnimator(model, draw)
 
 function _Browser_application(impl)
 {
-	var onUrlChange = impl.aR;
-	var onUrlRequest = impl.aS;
+	var onUrlChange = impl.aP;
+	var onUrlRequest = impl.aQ;
 	var key = function() { key.a(onUrlChange(_Browser_getUrl())); };
 
 	return _Browser_document({
@@ -4059,9 +4059,9 @@ function _Browser_application(impl)
 					var next = $elm$url$Url$fromString(href).a;
 					sendToApp(onUrlRequest(
 						(next
-							&& curr.ao === next.ao
-							&& curr.ac === next.ac
-							&& curr.ak.a === next.ak.a
+							&& curr.am === next.am
+							&& curr.ab === next.ab
+							&& curr.aj.a === next.aj.a
 						)
 							? $elm$browser$Browser$Internal(next)
 							: $elm$browser$Browser$External(href)
@@ -4069,9 +4069,9 @@ function _Browser_application(impl)
 				}
 			});
 		},
-		aN: function(flags)
+		aL: function(flags)
 		{
-			return A3(impl.aN, flags, _Browser_getUrl(), key);
+			return A3(impl.aL, flags, _Browser_getUrl(), key);
 		},
 		a_: impl.a_,
 		aZ: impl.aZ,
@@ -4141,17 +4141,17 @@ var _Browser_decodeEvent = F2(function(decoder, event)
 function _Browser_visibilityInfo()
 {
 	return (typeof _VirtualDom_doc.hidden !== 'undefined')
-		? { aL: 'hidden', aG: 'visibilitychange' }
+		? { aJ: 'hidden', aD: 'visibilitychange' }
 		:
 	(typeof _VirtualDom_doc.mozHidden !== 'undefined')
-		? { aL: 'mozHidden', aG: 'mozvisibilitychange' }
+		? { aJ: 'mozHidden', aD: 'mozvisibilitychange' }
 		:
 	(typeof _VirtualDom_doc.msHidden !== 'undefined')
-		? { aL: 'msHidden', aG: 'msvisibilitychange' }
+		? { aJ: 'msHidden', aD: 'msvisibilitychange' }
 		:
 	(typeof _VirtualDom_doc.webkitHidden !== 'undefined')
-		? { aL: 'webkitHidden', aG: 'webkitvisibilitychange' }
-		: { aL: 'hidden', aG: 'visibilitychange' };
+		? { aJ: 'webkitHidden', aD: 'webkitvisibilitychange' }
+		: { aJ: 'hidden', aD: 'visibilitychange' };
 }
 
 
@@ -4232,12 +4232,12 @@ var _Browser_call = F2(function(functionName, id)
 function _Browser_getViewport()
 {
 	return {
-		at: _Browser_getScene(),
-		az: {
-			aB: _Browser_window.pageXOffset,
-			aC: _Browser_window.pageYOffset,
-			aA: _Browser_doc.documentElement.clientWidth,
-			aa: _Browser_doc.documentElement.clientHeight
+		aq: _Browser_getScene(),
+		aw: {
+			ay: _Browser_window.pageXOffset,
+			az: _Browser_window.pageYOffset,
+			ax: _Browser_doc.documentElement.clientWidth,
+			_: _Browser_doc.documentElement.clientHeight
 		}
 	};
 }
@@ -4247,8 +4247,8 @@ function _Browser_getScene()
 	var body = _Browser_doc.body;
 	var elem = _Browser_doc.documentElement;
 	return {
-		aA: Math.max(body.scrollWidth, body.offsetWidth, elem.scrollWidth, elem.offsetWidth, elem.clientWidth),
-		aa: Math.max(body.scrollHeight, body.offsetHeight, elem.scrollHeight, elem.offsetHeight, elem.clientHeight)
+		ax: Math.max(body.scrollWidth, body.offsetWidth, elem.scrollWidth, elem.offsetWidth, elem.clientWidth),
+		_: Math.max(body.scrollHeight, body.offsetHeight, elem.scrollHeight, elem.offsetHeight, elem.clientHeight)
 	};
 }
 
@@ -4271,15 +4271,15 @@ function _Browser_getViewportOf(id)
 	return _Browser_withNode(id, function(node)
 	{
 		return {
-			at: {
-				aA: node.scrollWidth,
-				aa: node.scrollHeight
+			aq: {
+				ax: node.scrollWidth,
+				_: node.scrollHeight
 			},
-			az: {
-				aB: node.scrollLeft,
-				aC: node.scrollTop,
-				aA: node.clientWidth,
-				aa: node.clientHeight
+			aw: {
+				ay: node.scrollLeft,
+				az: node.scrollTop,
+				ax: node.clientWidth,
+				_: node.clientHeight
 			}
 		};
 	});
@@ -4309,18 +4309,18 @@ function _Browser_getElement(id)
 		var x = _Browser_window.pageXOffset;
 		var y = _Browser_window.pageYOffset;
 		return {
-			at: _Browser_getScene(),
-			az: {
-				aB: x,
-				aC: y,
-				aA: _Browser_doc.documentElement.clientWidth,
-				aa: _Browser_doc.documentElement.clientHeight
+			aq: _Browser_getScene(),
+			aw: {
+				ay: x,
+				az: y,
+				ax: _Browser_doc.documentElement.clientWidth,
+				_: _Browser_doc.documentElement.clientHeight
 			},
-			aJ: {
-				aB: x + rect.left,
-				aC: y + rect.top,
-				aA: rect.width,
-				aa: rect.height
+			aH: {
+				ay: x + rect.left,
+				az: y + rect.top,
+				ax: rect.width,
+				_: rect.height
 			}
 		};
 	});
@@ -4565,7 +4565,7 @@ var $elm$core$Set$toList = function (_v0) {
 var $elm$core$Basics$EQ = 1;
 var $elm$core$Basics$GT = 2;
 var $elm$core$Basics$LT = 0;
-var $author$project$Main$init = {L: _List_Nil, D: '', E: 'x?y.y!w|z?u.0|\\z.(z?v.0|x!z)', G: _List_Nil};
+var $author$project$Main$init = {D: _List_Nil, E: '', F: 'x?y.y!w|z?u.0|\\z.(z?v.0|x!z)', H: _List_Nil};
 var $elm$core$Result$Err = function (a) {
 	return {$: 1, a: a};
 };
@@ -4990,7 +4990,7 @@ var $elm$url$Url$Http = 0;
 var $elm$url$Url$Https = 1;
 var $elm$url$Url$Url = F6(
 	function (protocol, host, port_, path, query, fragment) {
-		return {_: fragment, ac: host, ai: path, ak: port_, ao: protocol, ap: query};
+		return {Z: fragment, ab: host, ah: path, aj: port_, am: protocol, an: query};
 	});
 var $elm$core$String$contains = _String_contains;
 var $elm$core$String$length = _String_length;
@@ -5275,8 +5275,8 @@ var $elm$core$Platform$Sub$none = $elm$core$Platform$Sub$batch(_List_Nil);
 var $elm$browser$Browser$sandbox = function (impl) {
 	return _Browser_element(
 		{
-			aN: function (_v0) {
-				return _Utils_Tuple2(impl.aN, $elm$core$Platform$Cmd$none);
+			aL: function (_v0) {
+				return _Utils_Tuple2(impl.aL, $elm$core$Platform$Cmd$none);
 			},
 			aX: function (_v1) {
 				return $elm$core$Platform$Sub$none;
@@ -5306,7 +5306,7 @@ var $elm$parser$Parser$Advanced$AddRight = F2(
 	});
 var $elm$parser$Parser$Advanced$DeadEnd = F4(
 	function (row, col, problem, contextStack) {
-		return {U: col, aH: contextStack, al: problem, as: row};
+		return {aE: col, aF: contextStack, aS: problem, aV: row};
 	});
 var $elm$parser$Parser$Advanced$Empty = {$: 0};
 var $elm$parser$Parser$Advanced$fromState = F2(
@@ -5314,7 +5314,7 @@ var $elm$parser$Parser$Advanced$fromState = F2(
 		return A2(
 			$elm$parser$Parser$Advanced$AddRight,
 			$elm$parser$Parser$Advanced$Empty,
-			A4($elm$parser$Parser$Advanced$DeadEnd, s.as, s.U, x, s.c));
+			A4($elm$parser$Parser$Advanced$DeadEnd, s.aV, s.aE, x, s.c));
 	});
 var $elm$parser$Parser$Advanced$end = function (x) {
 	return function (s) {
@@ -5447,7 +5447,7 @@ var $elm$parser$Parser$Advanced$chompWhileHelp = F5(
 					$elm$parser$Parser$Advanced$Good,
 					_Utils_cmp(s0.b, offset) < 0,
 					0,
-					{U: col, c: s0.c, d: s0.d, b: offset, as: row, a: s0.a});
+					{aE: col, c: s0.c, d: s0.d, b: offset, aV: row, a: s0.a});
 			} else {
 				if (_Utils_eq(newOffset, -2)) {
 					var $temp$isGood = isGood,
@@ -5479,7 +5479,7 @@ var $elm$parser$Parser$Advanced$chompWhileHelp = F5(
 	});
 var $elm$parser$Parser$Advanced$chompWhile = function (isGood) {
 	return function (s) {
-		return A5($elm$parser$Parser$Advanced$chompWhileHelp, isGood, s.b, s.as, s.U, s);
+		return A5($elm$parser$Parser$Advanced$chompWhileHelp, isGood, s.b, s.aV, s.aE, s);
 	};
 };
 var $elm$parser$Parser$Advanced$spaces = $elm$parser$Parser$Advanced$chompWhile(
@@ -5569,7 +5569,7 @@ var $elm$parser$Parser$Advanced$varHelp = F7(
 		while (true) {
 			var newOffset = A3($elm$parser$Parser$Advanced$isSubChar, isGood, offset, src);
 			if (_Utils_eq(newOffset, -1)) {
-				return {U: col, c: context, d: indent, b: offset, as: row, a: src};
+				return {aE: col, c: context, d: indent, b: offset, aV: row, a: src};
 			} else {
 				if (_Utils_eq(newOffset, -2)) {
 					var $temp$isGood = isGood,
@@ -5614,28 +5614,28 @@ var $elm$parser$Parser$Advanced$variable = function (i) {
 			return A2(
 				$elm$parser$Parser$Advanced$Bad,
 				false,
-				A2($elm$parser$Parser$Advanced$fromState, s, i.Y));
+				A2($elm$parser$Parser$Advanced$fromState, s, i.X));
 		} else {
-			var s1 = _Utils_eq(firstOffset, -2) ? A7($elm$parser$Parser$Advanced$varHelp, i.aO, s.b + 1, s.as + 1, 1, s.a, s.d, s.c) : A7($elm$parser$Parser$Advanced$varHelp, i.aO, firstOffset, s.as, s.U + 1, s.a, s.d, s.c);
+			var s1 = _Utils_eq(firstOffset, -2) ? A7($elm$parser$Parser$Advanced$varHelp, i.aM, s.b + 1, s.aV + 1, 1, s.a, s.d, s.c) : A7($elm$parser$Parser$Advanced$varHelp, i.aM, firstOffset, s.aV, s.aE + 1, s.a, s.d, s.c);
 			var name = A3($elm$core$String$slice, s.b, s1.b, s.a);
-			return A2($elm$core$Set$member, name, i.aU) ? A2(
+			return A2($elm$core$Set$member, name, i.aT) ? A2(
 				$elm$parser$Parser$Advanced$Bad,
 				false,
-				A2($elm$parser$Parser$Advanced$fromState, s, i.Y)) : A3($elm$parser$Parser$Advanced$Good, true, name, s1);
+				A2($elm$parser$Parser$Advanced$fromState, s, i.X)) : A3($elm$parser$Parser$Advanced$Good, true, name, s1);
 		}
 	};
 };
 var $elm$parser$Parser$variable = function (i) {
 	return $elm$parser$Parser$Advanced$variable(
-		{Y: $elm$parser$Parser$ExpectingVariable, aO: i.aO, aU: i.aU, aW: i.aW});
+		{X: $elm$parser$Parser$ExpectingVariable, aM: i.aM, aT: i.aT, aW: i.aW});
 };
 var $author$project$PiParser$nameLit = $author$project$PiParser$lexeme(
 	$elm$parser$Parser$variable(
 		{
-			aO: function (c) {
+			aM: function (c) {
 				return $elm$core$Char$isAlphaNum(c) || (c === '_');
 			},
-			aU: $elm$core$Set$empty,
+			aT: $elm$core$Set$empty,
 			aW: $elm$core$Char$isAlpha
 		}));
 var $author$project$PiParser$Null = {$: 4};
@@ -5659,7 +5659,7 @@ var $elm$parser$Parser$Advanced$token = function (_v0) {
 	var expecting = _v0.b;
 	var progress = !$elm$core$String$isEmpty(str);
 	return function (s) {
-		var _v1 = A5($elm$parser$Parser$Advanced$isSubString, str, s.b, s.as, s.U, s.a);
+		var _v1 = A5($elm$parser$Parser$Advanced$isSubString, str, s.b, s.aV, s.aE, s.a);
 		var newOffset = _v1.a;
 		var newRow = _v1.b;
 		var newCol = _v1.c;
@@ -5670,7 +5670,7 @@ var $elm$parser$Parser$Advanced$token = function (_v0) {
 			$elm$parser$Parser$Advanced$Good,
 			progress,
 			0,
-			{U: newCol, c: s.c, d: s.d, b: newOffset, as: newRow, a: s.a});
+			{aE: newCol, c: s.c, d: s.d, b: newOffset, aV: newRow, a: s.a});
 	};
 };
 var $elm$parser$Parser$Advanced$symbol = $elm$parser$Parser$Advanced$token;
@@ -5995,10 +5995,10 @@ var $author$project$PiParser$parser = A2(
 	A2($elm$parser$Parser$ignorer, $author$project$PiParser$parallel, $elm$parser$Parser$end));
 var $elm$parser$Parser$DeadEnd = F3(
 	function (row, col, problem) {
-		return {U: col, al: problem, as: row};
+		return {aE: col, aS: problem, aV: row};
 	});
 var $elm$parser$Parser$problemToDeadEnd = function (p) {
-	return A3($elm$parser$Parser$DeadEnd, p.as, p.U, p.al);
+	return A3($elm$parser$Parser$DeadEnd, p.aV, p.aE, p.aS);
 };
 var $elm$parser$Parser$Advanced$bagToList = F2(
 	function (bag, list) {
@@ -6030,7 +6030,7 @@ var $elm$parser$Parser$Advanced$run = F2(
 	function (_v0, src) {
 		var parse = _v0;
 		var _v1 = parse(
-			{U: 1, c: _List_Nil, d: 1, b: 0, as: 1, a: src});
+			{aE: 1, c: _List_Nil, d: 1, b: 0, aV: 1, a: src});
 		if (!_v1.$) {
 			var value = _v1.b;
 			return $elm$core$Result$Ok(value);
@@ -7022,21 +7022,21 @@ var $author$project$Main$update = F2(
 				return _Utils_update(
 					model,
 					{
-						L: _List_Nil,
-						D: $author$project$PiParser$showProcList(term),
-						G: $author$project$Pi$run(term)
+						D: _List_Nil,
+						E: $author$project$PiParser$showProcList(term),
+						H: $author$project$Pi$run(term)
 					});
 			} else {
 				var err = _v1.a;
 				return _Utils_update(
 					model,
-					{L: err, D: 'error', G: _List_Nil});
+					{D: err, E: 'error', H: _List_Nil});
 			}
 		} else {
 			var str = msg.a;
 			return _Utils_update(
 				model,
-				{E: str});
+				{F: str});
 		}
 	});
 var $author$project$Main$Change = function (a) {
@@ -7132,6 +7132,31 @@ var $elm$html$Html$Events$onInput = function (tagger) {
 			A2($elm$json$Json$Decode$map, tagger, $elm$html$Html$Events$targetValue)));
 };
 var $elm$html$Html$Attributes$placeholder = $elm$html$Html$Attributes$stringProperty('placeholder');
+var $author$project$PiParser$problem2String = function (problem) {
+	switch (problem.$) {
+		case 0:
+			var str = problem.a;
+			return 'expectiong ' + str;
+		case 7:
+			return 'expecting variable';
+		case 8:
+			var str = problem.a;
+			return 'expecting symbol ' + str;
+		case 9:
+			var str = problem.a;
+			return 'expecting keyword' + str;
+		case 10:
+			return 'execting end';
+		case 11:
+			return 'unexpected char';
+		case 12:
+			var str = problem.a;
+			return 'problem ' + str;
+		default:
+			var other = problem;
+			return 'error!';
+	}
+};
 var $elm$virtual_dom$VirtualDom$text = _VirtualDom_text;
 var $elm$html$Html$text = $elm$virtual_dom$VirtualDom$text;
 var $elm$html$Html$ul = _VirtualDom_node('ul');
@@ -7169,7 +7194,7 @@ var $author$project$Main$view = function (model) {
 							[
 								$elm$html$Html$Attributes$class('reader'),
 								$elm$html$Html$Attributes$placeholder('input lambda expression \u23CE'),
-								$elm$html$Html$Attributes$value(model.E),
+								$elm$html$Html$Attributes$value(model.F),
 								$elm$html$Html$Events$onInput($author$project$Main$Change)
 							]),
 						_List_Nil),
@@ -7179,7 +7204,7 @@ var $author$project$Main$view = function (model) {
 							[
 								$elm$html$Html$Attributes$class('submitter'),
 								$elm$html$Html$Events$onClick(
-								$author$project$Main$Eval(model.E))
+								$author$project$Main$Eval(model.F))
 							]),
 						_List_fromArray(
 							[
@@ -7190,8 +7215,35 @@ var $author$project$Main$view = function (model) {
 						_List_Nil,
 						_List_fromArray(
 							[
-								$elm$html$Html$text(model.D)
+								$elm$html$Html$text(model.E)
 							])),
+						A2(
+						$elm$html$Html$div,
+						_List_fromArray(
+							[
+								$elm$html$Html$Attributes$class('errors')
+							]),
+						A2(
+							$elm$core$List$map,
+							function (err) {
+								return A2(
+									$elm$html$Html$div,
+									_List_Nil,
+									_List_fromArray(
+										[
+											$elm$html$Html$text(
+											$author$project$PiParser$problem2String(err.aS)),
+											A2(
+											$elm$html$Html$div,
+											_List_Nil,
+											_List_fromArray(
+												[
+													$elm$html$Html$text(
+													'at row: ' + ($elm$core$String$fromInt(err.aV) + (', col: ' + $elm$core$String$fromInt(err.aE))))
+												]))
+										]));
+							},
+							model.D)),
 						A2(
 						$elm$html$Html$ul,
 						_List_fromArray(
@@ -7209,11 +7261,11 @@ var $author$project$Main$view = function (model) {
 											$elm$html$Html$text(str)
 										]));
 							},
-							model.G))
+							model.H))
 					]))
 			]));
 };
 var $author$project$Main$main = $elm$browser$Browser$sandbox(
-	{aN: $author$project$Main$init, aZ: $author$project$Main$update, a_: $author$project$Main$view});
+	{aL: $author$project$Main$init, aZ: $author$project$Main$update, a_: $author$project$Main$view});
 _Platform_export({'Main':{'init':$author$project$Main$main(
 	$elm$json$Json$Decode$succeed(0))(0)}});}(this));
