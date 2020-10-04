@@ -6998,7 +6998,7 @@ var $author$project$PiParser$show = function (proc) {
 		case 2:
 			var x = proc.a;
 			var p = proc.b;
-			return 'new ' + (x + ('.' + showPL(p)));
+			return '\\' + (x + ('.' + showPL(p)));
 		case 3:
 			var p = proc.a;
 			return '!' + showPL(p);
