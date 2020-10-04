@@ -6819,7 +6819,7 @@ var $author$project$Pi$create = F3(
 	function (channel, procList, _v12) {
 		var env = _v12.a;
 		var outputs = _v12.b;
-		var message = 'created new channel \'' + (channel + '\'.');
+		var message = 'created a new channel \'' + (channel + '\'.');
 		var state = _Utils_Tuple2(
 			A2(
 				$elm$core$List$cons,
@@ -6916,7 +6916,7 @@ var $author$project$Pi$send = F3(
 	function (channel, value, _v0) {
 		var env = _v0.a;
 		var outputs = _v0.b;
-		var message = 'sent \'' + (value + ('\' over channel \'' + (channel + '\'')));
+		var message = 'sent \'' + (value + ('\' over the channel \'' + (channel + '\'')));
 		var send_ = function (ch) {
 			if (!ch.$) {
 				var ss = ch.a;
