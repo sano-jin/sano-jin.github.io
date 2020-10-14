@@ -79,10 +79,11 @@ body {
     .interpreter .console .reader {
 	min-width: 900px;
     }
-
+/*
     .interpreter *{
 	font-size: 20px;
     }
+*/
 }
 
 @media only screen and (max-width: 600px) {
