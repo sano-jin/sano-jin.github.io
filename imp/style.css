@@ -85,12 +85,11 @@ body {
 }
 
 @media only screen and (max-width: 600px) {
-    .interpreter .console {
+    .interpreter .console .reader{
 	width: 100%;
     }
     
     .interpreter *{
 	font-size: 18px;
-	width: 100%;
     }
 }
