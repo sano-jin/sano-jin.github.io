@@ -7511,7 +7511,10 @@ var $author$project$Main$view = function (model) {
 					])),
 				A2(
 				$elm$html$Html$div,
-				_List_Nil,
+				_List_fromArray(
+					[
+						$elm$html$Html$Attributes$class('derivationTree')
+					]),
 				_List_fromArray(
 					[
 						function () {

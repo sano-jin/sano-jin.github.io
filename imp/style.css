@@ -18,6 +18,10 @@ body {
     display: block;
     margin: 10px auto;
 }
+    
+.interpreter .console .reader::placeholder {
+  color: #333;
+}
 
 .interpreter .console .reader {
     text-align: left;
@@ -26,10 +30,12 @@ body {
     outline: none;
     display: block;
     margin: 10px auto;
+    line-height: 120%;
 }
 
-.interpreter .console .reader::placeholder {
-  color: #333;
+.derivationTree {
+    display: block;
+    overflow: scroll;
 }
 
 .node .children {
@@ -37,7 +43,7 @@ body {
     overflow-x : visible;
     display: block;
     border-bottom: 1px solid #225;
-    margin: 0 0 5px;
+    margin: 0 0 10px;
     padding: 0 0;
 }
 
@@ -53,7 +59,7 @@ body {
 .node {
     display: inline-block;
     margin: 0 0;
-    padding: 5px 0;
+    padding: 10px 0;
     position: relative;
 }
 
@@ -80,21 +86,18 @@ body {
     .interpreter *{
 	font-size: 16px;
     }
-
     .interpreter .console .reader {
 	min-width: 900px;
     }
 }
 
 @media only screen and (max-width: 600px) {
-    
-    .interpreter .console{
+    .interpreter .console .reader{
 	width: 100%;
     }
-
+    
     .interpreter *{
 	font-size: 16px;
 	width: 100%;
     }
-
 }
