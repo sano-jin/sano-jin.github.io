@@ -21,9 +21,18 @@ body {
 .console {
     display: block;
     margin: 10px auto;
+}
+
+.interpreter .console .reader {
+    text-align: left;
+    border: 1px solid #355;
+    background: rgba(0,0,0,0.05);
+    outline: none;
+    display: block;
+    margin: 10px auto;
     line-height: 120%;
 }
-    
+
 .interpreter .console .reader::placeholder {
   color: #333;
 }
