@@ -21,24 +21,11 @@ body {
 .console {
     display: block;
     margin: 10px auto;
+    padding: 5px 0;
 }
     
 .interpreter .console .reader::placeholder {
   color: #333;
-}
-
-.interpreter .console .kb-reader {
-    height: 5em;
-    display: block;
-}
-
-.interpreter .console .reader {
-    text-align: left;
-    border: 1px solid #355;
-    background: rgba(0,0,0,0.05);
-    outline: none;
-    display: block;
-    margin: 10px auto;
 }
 
 .node .children {
@@ -62,7 +49,7 @@ body {
 .node {
     display: inline-block;
     margin: 0 0;
-    padding: 10px 0;
+    padding: 5px 0;
     position: relative;
 }
 
@@ -86,21 +73,28 @@ body {
 }
 
 @media only screen and (min-width: 601px) {
+    /*
     .interpreter *{
 	font-size: 18px;
     }
+   */  
+
     .interpreter .console .reader {
 	min-width: 900px;
     }
 }
 
 @media only screen and (max-width: 600px) {
+    
     .interpreter .console {
 	width: 100%;
     }
-    
+
     .interpreter *{
+	/*
 	font-size: 18px;
+       */	
 	width: 100%;
     }
+
 }
