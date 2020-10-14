@@ -21,7 +21,7 @@ body {
 .console {
     display: block;
     margin: 10px auto;
-    padding: 5px 0;
+    line-height: 120%;
 }
     
 .interpreter .console .reader::placeholder {
@@ -33,7 +33,7 @@ body {
     overflow-x : visible;
     display: block;
     border-bottom: 1px solid #225;
-    margin: 0 0 10px;
+    margin: 0 0 5px;
     padding: 0 0;
 }
 
