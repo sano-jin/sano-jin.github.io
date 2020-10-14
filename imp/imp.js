@@ -7361,6 +7361,24 @@ var $author$project$ImpParser$problem2String = function (problem) {
 			return 'error!';
 	}
 };
+var $elm$core$List$intersperse = F2(
+	function (sep, xs) {
+		if (!xs.b) {
+			return _List_Nil;
+		} else {
+			var hd = xs.a;
+			var tl = xs.b;
+			var step = F2(
+				function (x, rest) {
+					return A2(
+						$elm$core$List$cons,
+						sep,
+						A2($elm$core$List$cons, x, rest));
+				});
+			var spersed = A3($elm$core$List$foldr, step, _List_Nil, tl);
+			return A2($elm$core$List$cons, hd, spersed);
+		}
+	});
 var $elm$html$Html$span = _VirtualDom_node('span');
 var $elm$virtual_dom$VirtualDom$text = _VirtualDom_text;
 var $elm$html$Html$text = $elm$virtual_dom$VirtualDom$text;
@@ -7383,7 +7401,16 @@ var $author$project$Main$showTransString = function (transString) {
 					[
 						$elm$html$Html$Attributes$class('children')
 					]),
-				A2($elm$core$List$map, $author$project$Main$showTransString, transList)),
+				A2(
+					$elm$core$List$intersperse,
+					A2(
+						$elm$html$Html$span,
+						_List_fromArray(
+							[
+								$elm$html$Html$Attributes$class('padding')
+							]),
+						_List_Nil),
+					A2($elm$core$List$map, $author$project$Main$showTransString, transList))),
 				A2(
 				$elm$html$Html$div,
 				_List_fromArray(
@@ -7458,21 +7485,6 @@ var $author$project$Main$view = function (model) {
 								$elm$html$Html$text('run')
 							])),
 						A2(
-						$elm$html$Html$div,
-						_List_Nil,
-						_List_fromArray(
-							[
-								function () {
-								var _v0 = model.G;
-								if (!_v0.$) {
-									var transString = _v0.a;
-									return $author$project$Main$showTransString(transString);
-								} else {
-									return $elm$html$Html$text('');
-								}
-							}()
-							])),
-						A2(
 						$elm$html$Html$ul,
 						_List_Nil,
 						A2(
@@ -7496,6 +7508,21 @@ var $author$project$Main$view = function (model) {
 										]));
 							},
 							model.D))
+					])),
+				A2(
+				$elm$html$Html$div,
+				_List_Nil,
+				_List_fromArray(
+					[
+						function () {
+						var _v0 = model.G;
+						if (!_v0.$) {
+							var transString = _v0.a;
+							return $author$project$Main$showTransString(transString);
+						} else {
+							return $elm$html$Html$text('');
+						}
+					}()
 					]))
 			]));
 };
