@@ -9,13 +9,28 @@ title: pi calculus interpreter
 <div id="myapp"></div>
 
 - Syntax 
-  - `P`, `Q` =
-    - `x!y` (Send the value y over channel x)
-    - `x?y.P` (Receive on channel x, bind the result to y, then run P)
-    - `P|Q` (run P and Q simultaneously)
-    - `\x.P` (create a new channel x and run P)
-    - `!P` (NOT implemented yet. Repeatedly spawn copys of P)
-    - `0` (Terminate the process)
+  - `a` ::=
+    - `n` (integer number)
+    - `X` (variable)
+    - `a + a` (add)
+    - `a * a` (times)
+  - `b` ::=
+    - `true` 
+    - `false`
+    - `a <= a` (less than or equals to)
+    - `not b` (not)
+    - `b & b` (logical and)
+  - `c` ::=
+    - `skip`   (skip)
+    - `X := a` (update)
+    - `if b then c else c` (if)
+    - `while b do c` (while)
+    - `c; c`  (sequence)
+  - `s` ::=
+    - `{X -> n, ..., X -> n}` (map from variable to int)
+  - `Program` ::=
+    - `<c, s>`
+
 - How to use
 - Acknowledgement
   - This is heavily inspired by [lambda-friends](https://nikosai.ml/lambda-friends/).
