@@ -6072,7 +6072,7 @@ var $author$project$VM$showCommRule = function (commRule) {
 		case 6:
 			var bt = commRule.a;
 			return _Utils_Tuple2(
-				'wht',
+				'whf',
 				_List_fromArray(
 					[
 						$author$project$VM$showBExpTrans(bt)
