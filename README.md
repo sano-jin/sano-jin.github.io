@@ -7,17 +7,20 @@ Here are some of my works.
 
 ## MOESI Protocol emulator
 ![image](moesi_fig.png)
-- [Simple MOESI Protocol Emulator](https://sano-jin.github.io/moesi/moesi.html)
+- [Try it on your browser](https://sano-jin.github.io/moesi/moesi.html)
+- [Source code](https://github.com/sano-jin/moesi-emulator)
 
 ## IMP interpreter
+- prints out the derivation tree for the input program
 ![image](imp_fig.png)
-- [IMP interpreter](https://sano-jin.github.io/imp/imp.html)
-  - prints out the derivation tree for the input program
+- [Try it on your browser](https://sano-jin.github.io/imp/imp.html)
+- [Source code](https://github.com/sano-jin/imp-interpreter)
+
   
 ## Lambda calculus interpreter
 ![image](lambda_fig.png)
-- [Lambda calculus interpreter](https://sano-jin.github.io/lambda/lambda.html)
-
+- [Try it on your browser](https://sano-jin.github.io/lambda/lambda.html)
+- [Source code](https://github.com/sano-jin/lambda-calculus-interpreter)
 
 # Contact
 - [github](https://github.com/sano-jin)
