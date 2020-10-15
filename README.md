@@ -1,7 +1,7 @@
 # Portfolio
 
 ## Works
-![image](moesi_fig.png)
+![image](moesi_fig.png){ width = 200px }
 - [Simple MOESI Protocol Emulator](https://sano-jin.github.io/moesi/moesi.html)
 
 ![image](imp_fig.png)
