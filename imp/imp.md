@@ -27,7 +27,7 @@ title: IMP interpreter
     - `while b do c` (while)
     - `c; c`  (sequence)
   - `s` ::= (state)
-    - `{X -> n, ..., X -> n}` (mapping from variable to int)
+    - `{X -> n, ..., X -> n}` (map from variable to int)
   - `Program` ::= (program as a whole)
     - `<c, s>`
 
