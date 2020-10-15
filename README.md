@@ -10,8 +10,8 @@ Here are some of my works.
 - [Source code](https://github.com/sano-jin/moesi-emulator)
 
 ## IMP interpreter
-- prints out the derivation tree for the input program
 ![image](imp_fig.png)
+- prints out the derivation tree for the input program
 - [Try it on your browser](https://sano-jin.github.io/imp/imp.html)
 - [Source code](https://github.com/sano-jin/imp-interpreter)
 
