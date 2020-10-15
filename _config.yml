@@ -1,8 +1,6 @@
 theme: jekyll-theme-minimal
 title: Jin SANO
 description: Web Portfolio
-logo: [imp_fig.png]
-layout: default
 lsi: false
 safe: true
 incremental: false
