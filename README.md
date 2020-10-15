@@ -14,7 +14,7 @@ MOESI is a cache coherence protocol. Select Processing Elements (PE), set write/
 ## IMP interpreter
 ![image](imp_fig.png)
 
-IMP is a tiny imperative language designed for describing the formal definition of operational semantics.
+IMP is a tiny imperative language specially designed for describing the formal definition of operational semantics.
 Input a program and press run to see the derivation tree of the program.
 - [Try it on your browser](https://sano-jin.github.io/imp/imp.html)
 - [Source code](https://github.com/sano-jin/imp-interpreter)
