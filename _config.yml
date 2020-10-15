@@ -1,11 +1,11 @@
-logo: [lambda_fig.png]
+logo: [./imp_fig.png]
 layout: default
 theme: jekyll-theme-minimal
 title: Jin SANO
 description: Web Portfolio
 lsi: false
 safe: true
-source: [your repo's top level directory]
+source: [https://sano-jin.github.io]
 incremental: false
 highlighter: rouge
 gist:
