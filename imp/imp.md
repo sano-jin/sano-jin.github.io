@@ -1,39 +1,38 @@
 ---
-title: pi calculus interpreter
+title: IMP interpreter
 ---
 <script src="imp.js"></script>
 
 - This is a simple IMP interpreter.
-   - input commands and the initial state then press "run" to run. 
+   - input commands and the initial state, then press "run" to run. 
 
 <div id="myapp"></div>
 
 - Syntax 
-  - `a` ::=
+  - `a` ::= (arithmetic expression)
     - `n` (integer number)
     - `X` (variable)
     - `a + a` (add)
     - `a * a` (times)
-  - `b` ::=
+  - `b` ::= (boolean expression)
     - `true` 
     - `false`
     - `a <= a` (less than or equals to)
     - `not b` (not)
     - `b & b` (logical and)
-  - `c` ::=
+  - `c` ::= (command(s))
     - `skip`   (skip)
     - `X := a` (update)
     - `if b then c else c` (if)
     - `while b do c` (while)
     - `c; c`  (sequence)
-  - `s` ::=
+  - `s` ::= (state)
     - `{X -> n, ..., X -> n}` (map from variable to int)
-  - `Program` ::=
+  - `Program` ::= (program as a whole)
     - `<c, s>`
 
-- How to use
 - Acknowledgement
-  - This is heavily inspired by [lambda-friends](https://nikosai.ml/lambda-friends/).
+  - This interpreter may contains bugs.
 - [Source code](https://github.com/sano-jin/imp-interpreter.git) (written in Elm). 
 - twitter[@sano65747676](https://twitter.com/sano65747676)
   - Please feel free to contact me.
