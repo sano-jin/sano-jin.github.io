@@ -1,6 +1,5 @@
 ---
 logo: [imp_fig.png]
-layout: default
 ---
 
 # Portfolio
