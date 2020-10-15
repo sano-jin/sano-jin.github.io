@@ -10,12 +10,12 @@ Here are some of my works.
 
 ### IMP interpreter
 ![image](imp_fig.png)
-- [IMP interpreter](https://sano-jin.github.io/moesi/moesi.html)
+- [IMP interpreter](https://sano-jin.github.io/imp/imp.html)
   - prints out the derivation tree for the input program
   
 ### Lambda calculus interpreter
 ![image](lambda_fig.png)
-- [Lambda calculus interpreter](https://sano-jin.github.io/moesi/moesi.html)
+- [Lambda calculus interpreter](https://sano-jin.github.io/lambda/lambda.html)
 
 
 
