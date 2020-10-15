@@ -6,18 +6,24 @@ Here are some of my works.
 
 ## MOESI Protocol emulator
 ![image](moesi_fig.png)
+
+MOESI is a cache coherence protocol. Select Processing Elements (PE), set write/read option and observe their states to change. 
 - [Try it on your browser](https://sano-jin.github.io/moesi/moesi.html)
 - [Source code](https://github.com/sano-jin/moesi-emulator)
 
 ## IMP interpreter
 ![image](imp_fig.png)
-- prints out the derivation tree for the input program
+
+IMP is a tiny imparative language 
+prints out the derivation tree for the input program
 - [Try it on your browser](https://sano-jin.github.io/imp/imp.html)
 - [Source code](https://github.com/sano-jin/imp-interpreter)
 
   
 ## Lambda calculus interpreter
 ![image](lambda_fig.png)
+
+
 - [Try it on your browser](https://sano-jin.github.io/lambda/lambda.html)
 - [Source code](https://github.com/sano-jin/lambda)
 
