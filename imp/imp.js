@@ -4566,7 +4566,7 @@ var $elm$core$Basics$EQ = 1;
 var $elm$core$Basics$GT = 2;
 var $elm$core$Basics$LT = 0;
 var $elm$core$Maybe$Nothing = {$: 1};
-var $author$project$Main$init = {D: _List_Nil, E: '<Z:=0;(Y:=1; while Z + 1 <= X do (Y := 2 * Y; Z := Z +1)), {X -> 2, Y -> 4, Z -> 2}>', G: $elm$core$Maybe$Nothing};
+var $author$project$Main$init = {D: _List_Nil, E: '<Z:=0;(Y:=1; while Z + 1 <= X do (Y := 2 * Y; Z := Z +1)), {X -> 2, Y -> 0, Z -> 0}>', G: $elm$core$Maybe$Nothing};
 var $elm$core$Result$Err = function (a) {
 	return {$: 1, a: a};
 };
