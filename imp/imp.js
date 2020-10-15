@@ -5313,14 +5313,14 @@ var $author$project$VM$Wht = F3(
 	function (a, b, c) {
 		return {$: 5, a: a, b: b, c: c};
 	});
-var $author$project$VM$Mul = F2(
-	function (a, b) {
-		return {$: 3, a: a, b: b};
+var $author$project$VM$Mul = F3(
+	function (a, b, c) {
+		return {$: 3, a: a, b: b, c: c};
 	});
 var $author$project$VM$Num = {$: 0};
-var $author$project$VM$Sum = F2(
-	function (a, b) {
-		return {$: 2, a: a, b: b};
+var $author$project$VM$Sum = F3(
+	function (a, b, c) {
+		return {$: 2, a: a, b: b, c: c};
 	});
 var $author$project$VM$Var = {$: 1};
 var $author$project$VM$binop = F4(
@@ -5383,44 +5383,48 @@ var $author$project$VM$evalAExp = F2(
 				var _v2 = A2(binopAExp, aExp1, aExp2);
 				var _v3 = _v2.a;
 				var aExpRule1 = _v3.a;
-				var result1 = _v3.b;
+				var n1 = _v3.b;
 				var _v4 = _v2.b;
 				var aExpRule2 = _v4.a;
-				var result2 = _v4.b;
+				var n2 = _v4.b;
+				var n = n1 + n2;
 				return _Utils_Tuple2(
-					A2(
+					A3(
 						$author$project$VM$Sum,
 						_Utils_Tuple3(
 							_Utils_Tuple2(aExp1, state),
-							result1,
+							n1,
 							aExpRule1),
 						_Utils_Tuple3(
 							_Utils_Tuple2(aExp2, state),
-							result2,
-							aExpRule2)),
-					result1 + result2);
+							n2,
+							aExpRule2),
+						_Utils_Tuple3(n, n1, n2)),
+					n);
 			default:
 				var aExp1 = aExp.a;
 				var aExp2 = aExp.b;
 				var _v5 = A2(binopAExp, aExp1, aExp2);
 				var _v6 = _v5.a;
 				var aExpRule1 = _v6.a;
-				var result1 = _v6.b;
+				var n1 = _v6.b;
 				var _v7 = _v5.b;
 				var aExpRule2 = _v7.a;
-				var result2 = _v7.b;
+				var n2 = _v7.b;
+				var n = n1 * n2;
 				return _Utils_Tuple2(
-					A2(
+					A3(
 						$author$project$VM$Mul,
 						_Utils_Tuple3(
 							_Utils_Tuple2(aExp1, state),
-							result1,
+							n1,
 							aExpRule1),
 						_Utils_Tuple3(
-							_Utils_Tuple2(aExp1, state),
-							result1,
-							aExpRule1)),
-					result1 * result2);
+							_Utils_Tuple2(aExp2, state),
+							n2,
+							aExpRule2),
+						_Utils_Tuple3(n, n1, n2)),
+					n);
 		}
 	});
 var $author$project$VM$And1 = function (a) {
@@ -5436,13 +5440,13 @@ var $author$project$VM$And3 = F2(
 var $author$project$VM$Bool = function (a) {
 	return {$: 0, a: a};
 };
-var $author$project$VM$Lef = F2(
-	function (a, b) {
-		return {$: 2, a: a, b: b};
+var $author$project$VM$Lef = F3(
+	function (a, b, c) {
+		return {$: 2, a: a, b: b, c: c};
 	});
-var $author$project$VM$Let = F2(
-	function (a, b) {
-		return {$: 1, a: a, b: b};
+var $author$project$VM$Let = F3(
+	function (a, b, c) {
+		return {$: 1, a: a, b: b, c: c};
 	});
 var $author$project$VM$Notf = function (a) {
 	return {$: 4, a: a};
@@ -5456,6 +5460,13 @@ var $author$project$Util$uncurry = F2(
 		var a = _v0.a;
 		var b = _v0.b;
 		return A2(f, a, b);
+	});
+var $author$project$Util$uncurry3 = F2(
+	function (f, _v0) {
+		var a = _v0.a;
+		var b = _v0.b;
+		var c = _v0.c;
+		return A3(f, a, b, c);
 	});
 var $author$project$VM$evalBExp = F2(
 	function (bExp, state) {
@@ -5478,23 +5489,24 @@ var $author$project$VM$evalBExp = F2(
 				var _v1 = A2(binopAExp, aExp1, aExp2);
 				var _v2 = _v1.a;
 				var aExpRule1 = _v2.a;
-				var result1 = _v2.b;
+				var n1 = _v2.b;
 				var _v3 = _v1.b;
 				var aExpRule2 = _v3.a;
-				var result2 = _v3.b;
-				var tup = _Utils_Tuple2(
+				var n2 = _v3.b;
+				var tup = _Utils_Tuple3(
 					_Utils_Tuple3(
 						_Utils_Tuple2(aExp1, state),
-						result1,
+						n1,
 						aExpRule1),
 					_Utils_Tuple3(
-						_Utils_Tuple2(aExp1, state),
-						result1,
-						aExpRule1));
-				return (_Utils_cmp(result1, result2) < 1) ? _Utils_Tuple2(
-					A2($author$project$Util$uncurry, $author$project$VM$Let, tup),
+						_Utils_Tuple2(aExp2, state),
+						n2,
+						aExpRule2),
+					_Utils_Tuple2(n1, n2));
+				return (_Utils_cmp(n1, n2) < 1) ? _Utils_Tuple2(
+					A2($author$project$Util$uncurry3, $author$project$VM$Let, tup),
 					true) : _Utils_Tuple2(
-					A2($author$project$Util$uncurry, $author$project$VM$Lef, tup),
+					A2($author$project$Util$uncurry3, $author$project$VM$Lef, tup),
 					false);
 			case 3:
 				var bExp1 = bExp.a;
@@ -5803,6 +5815,9 @@ var $author$project$VM$Trans = F2(
 	function (a, b) {
 		return {$: 0, a: a, b: b};
 	});
+var $author$project$VM$Terminal = function (a) {
+	return {$: 1, a: a};
+};
 var $author$project$ImpParser$showAExp = F2(
 	function (aExp, priority) {
 		switch (aExp.$) {
@@ -5857,22 +5872,34 @@ var $author$project$VM$showAExpRule = function (aExpRule) {
 		case 2:
 			var at1 = aExpRule.a;
 			var at2 = aExpRule.b;
+			var _v2 = aExpRule.c;
+			var n = _v2.a;
+			var n1 = _v2.b;
+			var n2 = _v2.c;
 			return _Utils_Tuple2(
 				'sum',
 				_List_fromArray(
 					[
 						$author$project$VM$showAExpTrans(at1),
-						$author$project$VM$showAExpTrans(at2)
+						$author$project$VM$showAExpTrans(at2),
+						$author$project$VM$Terminal(
+						$elm$core$String$fromInt(n) + (' = ' + ($elm$core$String$fromInt(n1) + (' + ' + $elm$core$String$fromInt(n2)))))
 					]));
 		default:
 			var at1 = aExpRule.a;
 			var at2 = aExpRule.b;
+			var _v3 = aExpRule.c;
+			var n = _v3.a;
+			var n1 = _v3.b;
+			var n2 = _v3.c;
 			return _Utils_Tuple2(
 				'mul',
 				_List_fromArray(
 					[
 						$author$project$VM$showAExpTrans(at1),
-						$author$project$VM$showAExpTrans(at2)
+						$author$project$VM$showAExpTrans(at2),
+						$author$project$VM$Terminal(
+						$elm$core$String$fromInt(n) + (' = ' + ($elm$core$String$fromInt(n1) + (' * ' + $elm$core$String$fromInt(n2)))))
 					]));
 	}
 };
@@ -5916,22 +5943,32 @@ var $author$project$VM$showBExpRule = function (bExpRule) {
 		case 1:
 			var at1 = bExpRule.a;
 			var at2 = bExpRule.b;
+			var _v2 = bExpRule.c;
+			var n1 = _v2.a;
+			var n2 = _v2.b;
 			return _Utils_Tuple2(
 				'let',
 				_List_fromArray(
 					[
 						$author$project$VM$showAExpTrans(at1),
-						$author$project$VM$showAExpTrans(at2)
+						$author$project$VM$showAExpTrans(at2),
+						$author$project$VM$Terminal(
+						$elm$core$String$fromInt(n1) + (' <= ' + $elm$core$String$fromInt(n2)))
 					]));
 		case 2:
 			var at1 = bExpRule.a;
 			var at2 = bExpRule.b;
+			var _v3 = bExpRule.c;
+			var n1 = _v3.a;
+			var n2 = _v3.b;
 			return _Utils_Tuple2(
 				'lef',
 				_List_fromArray(
 					[
 						$author$project$VM$showAExpTrans(at1),
-						$author$project$VM$showAExpTrans(at2)
+						$author$project$VM$showAExpTrans(at2),
+						$author$project$VM$Terminal(
+						$elm$core$String$fromInt(n1) + (' > ' + $elm$core$String$fromInt(n2)))
 					]));
 		case 3:
 			var bt = bExpRule.a;
@@ -7383,55 +7420,69 @@ var $elm$html$Html$span = _VirtualDom_node('span');
 var $elm$virtual_dom$VirtualDom$text = _VirtualDom_text;
 var $elm$html$Html$text = $elm$virtual_dom$VirtualDom$text;
 var $author$project$Main$showTransString = function (transString) {
-	var beforeAfter = transString.a;
-	var _v1 = transString.b;
-	var transName = _v1.a;
-	var transList = _v1.b;
-	return A2(
-		$elm$html$Html$span,
-		_List_fromArray(
-			[
-				$elm$html$Html$Attributes$class('node')
-			]),
-		_List_fromArray(
-			[
-				A2(
-				$elm$html$Html$div,
-				_List_fromArray(
-					[
-						$elm$html$Html$Attributes$class('children')
-					]),
-				A2(
-					$elm$core$List$intersperse,
+	if (!transString.$) {
+		var beforeAfter = transString.a;
+		var _v1 = transString.b;
+		var transName = _v1.a;
+		var transList = _v1.b;
+		return A2(
+			$elm$html$Html$span,
+			_List_fromArray(
+				[
+					$elm$html$Html$Attributes$class('node')
+				]),
+			_List_fromArray(
+				[
 					A2(
-						$elm$html$Html$span,
-						_List_fromArray(
-							[
-								$elm$html$Html$Attributes$class('padding')
-							]),
-						_List_Nil),
-					A2($elm$core$List$map, $author$project$Main$showTransString, transList))),
-				A2(
-				$elm$html$Html$div,
-				_List_fromArray(
-					[
-						$elm$html$Html$Attributes$class('beforeAfter')
-					]),
-				_List_fromArray(
-					[
-						$elm$html$Html$text(beforeAfter)
-					])),
-				A2(
-				$elm$html$Html$div,
-				_List_fromArray(
-					[
-						$elm$html$Html$Attributes$class('trans')
-					]),
-				_List_fromArray(
-					[
-						$elm$html$Html$text(transName)
-					]))
-			]));
+					$elm$html$Html$div,
+					_List_fromArray(
+						[
+							$elm$html$Html$Attributes$class('children')
+						]),
+					A2(
+						$elm$core$List$intersperse,
+						A2(
+							$elm$html$Html$span,
+							_List_fromArray(
+								[
+									$elm$html$Html$Attributes$class('padding')
+								]),
+							_List_Nil),
+						A2($elm$core$List$map, $author$project$Main$showTransString, transList))),
+					A2(
+					$elm$html$Html$div,
+					_List_fromArray(
+						[
+							$elm$html$Html$Attributes$class('beforeAfter')
+						]),
+					_List_fromArray(
+						[
+							$elm$html$Html$text(beforeAfter)
+						])),
+					A2(
+					$elm$html$Html$div,
+					_List_fromArray(
+						[
+							$elm$html$Html$Attributes$class('trans')
+						]),
+					_List_fromArray(
+						[
+							$elm$html$Html$text(transName)
+						]))
+				]));
+	} else {
+		var expStr = transString.a;
+		return A2(
+			$elm$html$Html$span,
+			_List_fromArray(
+				[
+					$elm$html$Html$Attributes$class('terminal')
+				]),
+			_List_fromArray(
+				[
+					$elm$html$Html$text(expStr)
+				]));
+	}
 };
 var $elm$html$Html$ul = _VirtualDom_node('ul');
 var $elm$html$Html$Attributes$value = $elm$html$Html$Attributes$stringProperty('value');
