@@ -1,10 +1,3 @@
----
-title: [The title of your site]
-description: [A short description of your site's purpose]
-logo: [lambda_fig.png]
-layout: default
----
-
 # Portfolio
 
 ## Works
