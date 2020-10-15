@@ -1,9 +1,3 @@
-body {
-    background-image: url("background.png");
-    background-repeat: no-repeat;
-    background-color: #171717;
-}
-
 .interpreter {
     text-align: center;
     margin: 20px auto;
@@ -13,7 +7,7 @@ body {
 .interpreter *{
     background: transparent;
     font-family: 'Inconsolata', monospace;
-    color: #eee;
+    color: #111;
 }
 
 .interpreter .states {
@@ -21,13 +15,13 @@ body {
 }
 
 .console .reader::placeholder {
-  color: #999;
+  color: #444;
 }
 
 .console .reader {
     text-align: left;
     border: 1px solid gray;
-    background: rgba(0,0,0,0.5);
+    background: rgba(0,0,0,0.05);
     outline: none;
 }
 
