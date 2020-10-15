@@ -9,7 +9,7 @@ layout: default
 # Portfolio
 
 ## Works
-Here are some my works.
+Here are some of my works.
 - They are all written in Elm (and transpiled into javascript) so you can try them on your browser :)
 
 ### MOESI Protocol emulator
