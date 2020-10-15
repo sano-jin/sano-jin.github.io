@@ -20,7 +20,7 @@ Here are some of my works.
 ## Lambda calculus interpreter
 ![image](lambda_fig.png)
 - [Try it on your browser](https://sano-jin.github.io/lambda/lambda.html)
-- [Source code](https://github.com/sano-jin/lambda-calculus-interpreter)
+- [Source code](https://github.com/sano-jin/lambda)
 
 # Contact
 - [github](https://github.com/sano-jin)
