@@ -7,7 +7,8 @@ Here are some of my works.
 ## MOESI Protocol emulator
 ![image](moesi_fig.png)
 
-MOESI is a cache coherence protocol. Select Processing Elements (PE), set write/read option and observe their states to change. 
+MOESI is a cache coherence protocol, implemented in ARM64.
+Select Processing Elements (PE), set write/read option and observe their states to change. 
 - [Try it on your browser](https://sano-jin.github.io/moesi/moesi.html)
 - [Source code](https://github.com/sano-jin/moesi-emulator)
 
@@ -24,7 +25,7 @@ Input a program and press run to see the derivation tree of the program.
 ![image](lambda_fig.png)
 
 Lambda calculus is an absolute foundation of Functional programming languages.
-It is simple yet powerful enough to encode ALL the program runs on computers (as same as Turing Machine).
+It is simple yet powerful enough to encode ALL the programs run on computers (as same as Turing Machine).
 Input an expression and press run to get the full reduction graph.
 - [Try it on your browser](https://sano-jin.github.io/lambda/lambda.html)
 - [Source code](https://github.com/sano-jin/lambda)
