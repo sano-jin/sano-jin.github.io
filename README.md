@@ -1,7 +1,3 @@
----
-logo: [imp_fig.png]
----
-
 # Portfolio
 Hello. I am sano. 
 
