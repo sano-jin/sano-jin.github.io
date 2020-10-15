@@ -14,8 +14,8 @@ MOESI is a cache coherence protocol. Select Processing Elements (PE), set write/
 ## IMP interpreter
 ![image](imp_fig.png)
 
-IMP is a tiny imparative language 
-prints out the derivation tree for the input program
+IMP is a tiny imperative language designed for describing the formal definition of operational semantics.
+Input a program and press run to see the derivation tree for the program.
 - [Try it on your browser](https://sano-jin.github.io/imp/imp.html)
 - [Source code](https://github.com/sano-jin/imp-interpreter)
 
@@ -23,7 +23,9 @@ prints out the derivation tree for the input program
 ## Lambda calculus interpreter
 ![image](lambda_fig.png)
 
-
+Lambda calculus is an absolute foundation of Functional programming language.
+It is simple yet powerful enough to encode ALL the program runs on computers (as same as Turing Machine).
+Input an expression and press run to get the full reduction graph.
 - [Try it on your browser](https://sano-jin.github.io/lambda/lambda.html)
 - [Source code](https://github.com/sano-jin/lambda)
 
