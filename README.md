@@ -23,7 +23,7 @@ Input a program and press run to see the derivation tree of the program.
 ## Lambda calculus interpreter
 ![image](lambda_fig.png)
 
-Lambda calculus is an absolute foundation of Functional programming language.
+Lambda calculus is an absolute foundation of Functional programming languages.
 It is simple yet powerful enough to encode ALL the program runs on computers (as same as Turing Machine).
 Input an expression and press run to get the full reduction graph.
 - [Try it on your browser](https://sano-jin.github.io/lambda/lambda.html)
