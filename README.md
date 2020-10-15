@@ -1,5 +1,5 @@
 
-Hello. I am sano. 
+Hello, I am sano. 
 
 # Works
 Here are some of my works.
