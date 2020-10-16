@@ -15,7 +15,7 @@ Select Processing Elements (PE), set write/read option and observe their states 
 ## IMP interpreter
 ![image](imp_fig.png)
 
-IMP is a tiny imperative language specially designed for describing the formal definition of operational semantics.
+IMP is a tiny imperative language specially designed for giving a formal description on execution of a program: Operational Semantics.
 Input a program and press run to see the derivation tree (based on big-step semantics) of the program.
 - [Try it on your browser](https://sano-jin.github.io/imp/imp.html)
 - [Source code](https://github.com/sano-jin/imp-interpreter)
