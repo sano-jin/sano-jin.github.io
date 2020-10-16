@@ -10,4 +10,4 @@ gist:
 kramdown:
   math_engine: mathjax
   syntax_highlighter: rouge
-logo: bg-sq-dot.png
+logo: bg-sq-dots.png
