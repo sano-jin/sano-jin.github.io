@@ -35,7 +35,7 @@ body {
 
 .derivationTree {
     display: block;
-    margin: 0 20px;
+    margin: 0 0;
     overflow-x : scroll;
 
 }
