@@ -2,8 +2,6 @@
     text-align: center;
     margin: 20px auto;
     position: relative;
-    display: block;
-    overflow-x: scroll;
 }
 
 .interpreter *{
@@ -34,6 +32,11 @@
     height: max;
     padding: 0 20px;
     outline: none;
+}
+
+.states {
+    display: block;
+    overflow-x: scroll;
 }
 
 .states ul {
