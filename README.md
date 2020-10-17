@@ -23,7 +23,7 @@ Input an expression and press run to get the full reduction graph.
 - [Source code](https://github.com/sano-jin/lambda)
 
 ## MOESI Protocol emulator
-![image](moesi_fig.png)
+![image](moesi/moesi-fig.png)
 
 MOESI is a cache coherence protocol, implemented in ARM64.
 Select Processing Elements (PE), set write/read option and observe their states to change. 
