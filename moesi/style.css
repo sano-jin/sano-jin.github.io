@@ -2,15 +2,18 @@
     display: block;
     position:relative;
     overflow-x: scroll;
-    border:3px solid gray;
-    box-shadow:5px 5px 5px lightgray;
 /*
     margin: 20px auto;
 */ 
-   border-collapse:collapse;
 /*
    font-size:20px;
 */
+}
+
+.emulator > tbody {
+   border-collapse:collapse;
+    border:3px solid gray;
+    box-shadow:5px 5px 5px lightgray;
 }
 
 .emulator select>option {
