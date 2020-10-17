@@ -2,9 +2,7 @@
     display: block;
     position:relative;
     overflow-x: scroll;
-/*
-    margin: 20px auto;
-*/ 
+    margin: 0 auto 5px;
 /*
    font-size:20px;
 */
@@ -12,8 +10,8 @@
 
 .emulator > tbody {
    border-collapse:collapse;
-    border:3px solid gray;
-    box-shadow:5px 5px 5px lightgray;
+   border:3px solid gray;
+   box-shadow:5px 5px 5px lightgray;
 }
 
 .emulator select>option {
