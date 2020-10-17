@@ -1,4 +1,5 @@
 .emulator {
+    display: block;
     position:relative;
     overflow-x: scroll;
     border:3px solid gray;
