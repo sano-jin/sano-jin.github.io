@@ -2,7 +2,6 @@
 title: lambda calculus interpreter
 note: This interpreter (probably...) contains bugs. If you find any, feel free to tell me...
 ---
-<script src="lambda.js"></script>
 
 Lambda calculus is an absolute foundation of Functional programming languages.
 It is simple yet powerful enough to encode ALL the programs run on computers (as same as Turing Machine).
@@ -29,6 +28,7 @@ Input an expression and press run to get the full reduction graph.
 - twitter[@sano65747676](https://twitter.com/sano65747676)
   - Please feel free to contact me.
 
+<script src="lambda.js"></script>
 <script>
   var app = Elm.Main.init({
     node: document.getElementById('myapp')
