@@ -13,9 +13,7 @@
 }
 
 .emulator select>option {
-    /*
-    font-size:20px;
-*/
+    
     text-align:center;
 /*
     color:gray;
@@ -25,9 +23,7 @@
 .emulator select{
     cursor:pointer;
     color:black;
-/*
     padding:6px 15px;
-*/
     background:white;
     border-radius:10px;
     outline:none;
