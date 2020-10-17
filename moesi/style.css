@@ -1,36 +1,48 @@
 .emulator {
     position:relative;
-    overflow-x:scroll;
+    overflow-x: scroll;
     border:3px solid gray;
     box-shadow:5px 5px 5px lightgray;
+/*
     margin: 20px auto;
-    border-collapse:collapse;
-    font-size:20px;
+*/ 
+   border-collapse:collapse;
+/*
+   font-size:20px;
+*/
 }
 
 .emulator select>option {
+    /*
     font-size:20px;
+*/
     text-align:center;
+/*
     color:gray;
+*/
 }
 
 .emulator select{
     cursor:pointer;
     color:black;
+/*
     padding:6px 15px;
+*/
     background:white;
     border-radius:10px;
     outline:none;
     font-family: 'Quicksand', sans-serif;
+/*
     font-size:20px;
+*/
 }
 
 .emulator .read,
 .emulator .write {
     cursor:pointer;
     color:black;
-    padding:0 10px;
-    border-radius:10px;
+    padding:0 5px;
+    border-radius:5px;
     display:inline-block;
 }
 
@@ -43,12 +55,12 @@
 }
 
 .emulator>tbody>tr>th {
-    padding:2px 10px;
+    padding:2px 5px;
 }
 
 .emulator>tbody>tr>td {
     text-align:center;
-    padding:7px 10px;
+    padding:3px 5px;
     border:3px dashed gray;
 }
 
