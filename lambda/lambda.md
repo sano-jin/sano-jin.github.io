@@ -4,8 +4,10 @@ note: This interpreter (probably...) contains bugs. If you find any, feel free t
 ---
 <script src="lambda.js"></script>
 
-- This is a simple lambda-calculus interpreter.
-   - input an expression and press "run" to run. 
+Lambda calculus is an absolute foundation of Functional programming languages.
+It is simple yet powerful enough to encode ALL the programs run on computers (as same as Turing Machine).
+
+Input an expression and press run to get the full reduction graph.
 
 <div id="myapp"></div>
 
