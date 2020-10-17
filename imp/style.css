@@ -11,7 +11,7 @@ body {
     background: transparent;
     font-family: 'Inconsolata', monospace;
     color: #111;
-    padding: 0 20px;
+    padding: 0 0;
 }
 
 .console {
