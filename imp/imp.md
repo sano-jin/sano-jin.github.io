@@ -1,12 +1,12 @@
 ---
 title: IMP interpreter
 ---
-<script src="imp.js"></script>
 
-- This is a simple IMP interpreter.
-   - input commands and the initial state, then press "run" to run. 
+IMP is a tiny imperative language specially designed for giving a formal description on execution of a program: Operational Semantics. 
+Input commands and an initial state then press run to see the derivation tree (based on big-step semantics).
 
 <div id="myapp"></div>
+
 
 - Syntax 
   - `a` ::= (arithmetic expression)
@@ -37,6 +37,7 @@ title: IMP interpreter
 - twitter[@sano65747676](https://twitter.com/sano65747676)
   - Please feel free to contact me.
 
+<script src="imp.js"></script>
 <script>
   var app = Elm.Main.init({
     node: document.getElementById('myapp')
