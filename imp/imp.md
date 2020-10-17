@@ -6,8 +6,7 @@ IMP is a tiny imperative language specially designed for giving a formal descrip
 
 Input commands and an initial state then press run to see the derivation tree (based on big-step semantics).
 
-<div id="myapp"></div>
-
+<div style="display:none;"  id="myapp"></div>
 
 - Syntax 
   - `a` ::= (arithmetic expression)
