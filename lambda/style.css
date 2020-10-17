@@ -25,6 +25,7 @@
     border: 1px solid gray;
     background: rgba(0,0,0,0.05);
     outline: none;
+    width: 100%;
 }
 
 .console .submitter{
