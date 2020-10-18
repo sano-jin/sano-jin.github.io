@@ -1,6 +1,8 @@
 ---
 title: IMP interpreter
 ---
+<link href="https://fonts.googleapis.com/css2?family=Reenie+Beanie&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
 
 IMP is a tiny imperative language specially designed for giving a formal description on execution of a program: Operational Semantics. 
 
@@ -38,11 +40,8 @@ Input commands and an initial state then press run to see the derivation tree (b
 - twitter[@sano65747676](https://twitter.com/sano65747676)
   - Please feel free to contact me.
 
-
-<link href="https://fonts.googleapis.com/css2?family=Reenie+Beanie&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="./proofTree/proofTree.css">
 <script src="./proofTree/proofTree.js"></script>
-<link rel="stylesheet" href="style.css">
 <script src="imp.js"></script>
 <script>
   var app = Elm.Main.init({
