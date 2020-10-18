@@ -3,7 +3,6 @@ body {
 
 .interpreter {
     text-align: center;
-    margin: 20px auto;
     position: relative;
 }
 
@@ -28,7 +27,7 @@ body {
     background: rgba(0,0,0,0.005);
     outline: none;
     display: block;
-    margin: 10px auto;
+    padding: 5px 5px;
     line-height: 120%;
 }
 
@@ -45,7 +44,7 @@ body {
     border: 1px solid lightblue;
     border-radius: 50px;
     height: max;
-    padding: 0 20px;
+    padding: 5px 20px;
     outline: none;
     margin: 10px auto;
     text-align: center;
