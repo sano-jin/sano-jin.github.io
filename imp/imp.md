@@ -50,8 +50,11 @@ Input commands and an initial state then press run to see the derivation tree (b
   
   app.ports.sendData.subscribe( ( data ) => {
   console.log("Data from Elm: ", data);
-
+  
   const tree = document.getElementById( "derivationTree" );
-    renderProofTree( tree, data );
+
+  if ( data === "error" ) tree.textContent = ""; 
+  else renderProofTree( tree, data );
+  
   });
 </script>
