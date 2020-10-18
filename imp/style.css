@@ -27,7 +27,7 @@ body {
 .interpreter .console .reader {
     text-align: left;
     border: 1px solid #ddd;
-    background: rgba(0,0,0,0.05);
+    background: rgba(0,0,0,0.005);
     outline: none;
     display: block;
     margin: 10px auto;
