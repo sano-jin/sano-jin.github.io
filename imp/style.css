@@ -33,9 +33,12 @@ body {
 }
 
 #derivationTree {
-    font-family: 'Inconsolata', monospace;    
+    line-height: 1em
 }
 
+#derivationTree * {
+    font-family: 'Inconsolata', monospace;    
+}
     
 
 .interpreter .console .submitter{
