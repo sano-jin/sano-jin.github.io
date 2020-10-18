@@ -9,7 +9,9 @@ body {
 
 .interpreter * {
     font-family: 'Inconsolata', monospace;
+/*
     color: #111;
+*/
     padding: 0 0;
 }
 
@@ -19,12 +21,12 @@ body {
 }
     
 .interpreter .console .reader::placeholder {
-  color: #333;
+  color: #aaa;
 }
 
 .interpreter .console .reader {
     text-align: left;
-    border: 1px solid #355;
+    border: 1px solid #ddd;
     background: rgba(0,0,0,0.05);
     outline: none;
     display: block;
@@ -42,7 +44,7 @@ body {
     
 
 .interpreter .console .submitter{
-    border: 1px solid #333;
+    border: 1px solid #ddd;
     border-radius: 50px;
     height: max;
     padding: 0 20px;
