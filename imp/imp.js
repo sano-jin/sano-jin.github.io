@@ -7315,7 +7315,8 @@ var $author$project$Main$update = F2(
 					_Utils_update(
 						model,
 						{D: err, K: $elm$core$Maybe$Nothing}),
-					$elm$core$Platform$Cmd$none);
+					$author$project$Main$sendData(
+						$elm$json$Json$Encode$string('error')));
 			}
 		} else {
 			var str = msg.a;
