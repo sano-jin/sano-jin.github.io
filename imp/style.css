@@ -9,9 +9,7 @@ body {
 
 .interpreter * {
     font-family: 'Inconsolata', monospace;
-/*
-    color: #111;
-*/
+    color: #777;
     padding: 0 0;
 }
 
