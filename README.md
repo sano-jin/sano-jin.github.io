@@ -5,7 +5,7 @@ Hello, I am sano.
 Here are some of my works.
 
 ## IMP interpreter
-![image](imp_fig.png)
+![image](imp/imp-img.png)
 
 IMP is a tiny imperative language specially designed for giving a formal description on execution of a program: Operational Semantics.
 Input a program and press run to see the derivation tree (based on big-step semantics).
