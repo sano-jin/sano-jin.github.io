@@ -6367,6 +6367,21 @@ var $author$project$ImpParser$While = F2(
 	function (a, b) {
 		return {$: 3, a: a, b: b};
 	});
+var $elm$parser$Parser$Advanced$backtrackable = function (_v0) {
+	var parse = _v0;
+	return function (s0) {
+		var _v1 = parse(s0);
+		if (_v1.$ === 1) {
+			var x = _v1.b;
+			return A2($elm$parser$Parser$Advanced$Bad, false, x);
+		} else {
+			var a = _v1.b;
+			var s1 = _v1.c;
+			return A3($elm$parser$Parser$Advanced$Good, false, a, s1);
+		}
+	};
+};
+var $elm$parser$Parser$backtrackable = $elm$parser$Parser$Advanced$backtrackable;
 var $elm$core$List$append = F2(
 	function (xs, ys) {
 		if (!ys.b) {
@@ -6377,6 +6392,46 @@ var $elm$core$List$append = F2(
 	});
 var $elm$core$List$concat = function (lists) {
 	return A3($elm$core$List$foldr, $elm$core$List$append, _List_Nil, lists);
+};
+var $elm$parser$Parser$ExpectingKeyword = function (a) {
+	return {$: 9, a: a};
+};
+var $elm$parser$Parser$Advanced$Token = F2(
+	function (a, b) {
+		return {$: 0, a: a, b: b};
+	});
+var $elm$parser$Parser$Advanced$isSubString = _Parser_isSubString;
+var $elm$parser$Parser$Advanced$keyword = function (_v0) {
+	var kwd = _v0.a;
+	var expecting = _v0.b;
+	var progress = !$elm$core$String$isEmpty(kwd);
+	return function (s) {
+		var _v1 = A5($elm$parser$Parser$Advanced$isSubString, kwd, s.b, s.ap, s.aF, s.a);
+		var newOffset = _v1.a;
+		var newRow = _v1.b;
+		var newCol = _v1.c;
+		return (_Utils_eq(newOffset, -1) || (0 <= A3(
+			$elm$parser$Parser$Advanced$isSubChar,
+			function (c) {
+				return $elm$core$Char$isAlphaNum(c) || (c === '_');
+			},
+			newOffset,
+			s.a))) ? A2(
+			$elm$parser$Parser$Advanced$Bad,
+			false,
+			A2($elm$parser$Parser$Advanced$fromState, s, expecting)) : A3(
+			$elm$parser$Parser$Advanced$Good,
+			progress,
+			0,
+			{aF: newCol, c: s.c, d: s.d, b: newOffset, ap: newRow, a: s.a});
+	};
+};
+var $elm$parser$Parser$keyword = function (kwd) {
+	return $elm$parser$Parser$Advanced$keyword(
+		A2(
+			$elm$parser$Parser$Advanced$Token,
+			kwd,
+			$elm$parser$Parser$ExpectingKeyword(kwd)));
 };
 var $elm$parser$Parser$Advanced$lazy = function (thunk) {
 	return function (s) {
@@ -6459,11 +6514,6 @@ var $elm$parser$Parser$succeed = $elm$parser$Parser$Advanced$succeed;
 var $elm$parser$Parser$ExpectingSymbol = function (a) {
 	return {$: 8, a: a};
 };
-var $elm$parser$Parser$Advanced$Token = F2(
-	function (a, b) {
-		return {$: 0, a: a, b: b};
-	});
-var $elm$parser$Parser$Advanced$isSubString = _Parser_isSubString;
 var $elm$parser$Parser$Advanced$token = function (_v0) {
 	var str = _v0.a;
 	var expecting = _v0.b;
@@ -6898,21 +6948,6 @@ var $author$project$ImpParser$Le = F2(
 var $author$project$ImpParser$Not = function (a) {
 	return {$: 2, a: a};
 };
-var $elm$parser$Parser$Advanced$backtrackable = function (_v0) {
-	var parse = _v0;
-	return function (s0) {
-		var _v1 = parse(s0);
-		if (_v1.$ === 1) {
-			var x = _v1.b;
-			return A2($elm$parser$Parser$Advanced$Bad, false, x);
-		} else {
-			var a = _v1.b;
-			var s1 = _v1.c;
-			return A3($elm$parser$Parser$Advanced$Good, false, a, s1);
-		}
-	};
-};
-var $elm$parser$Parser$backtrackable = $elm$parser$Parser$Advanced$backtrackable;
 var $author$project$ImpParser$Bool = function (a) {
 	return {$: 0, a: a};
 };
@@ -6920,12 +6955,12 @@ var $author$project$ImpParser$falseLit = A2(
 	$elm$parser$Parser$ignorer,
 	$elm$parser$Parser$succeed(false),
 	$author$project$ImpParser$lexeme(
-		$elm$parser$Parser$symbol('false')));
+		$elm$parser$Parser$keyword('false')));
 var $author$project$ImpParser$trueLit = A2(
 	$elm$parser$Parser$ignorer,
 	$elm$parser$Parser$succeed(true),
 	$author$project$ImpParser$lexeme(
-		$elm$parser$Parser$symbol('true')));
+		$elm$parser$Parser$keyword('true')));
 var $author$project$ImpParser$boolLit = A2(
 	$elm$parser$Parser$map,
 	$author$project$ImpParser$Bool,
@@ -6943,18 +6978,19 @@ function $author$project$ImpParser$cyclic$parseUnaryBool() {
 	return $elm$parser$Parser$oneOf(
 		_List_fromArray(
 			[
-				$author$project$ImpParser$boolLit,
+				$elm$parser$Parser$backtrackable($author$project$ImpParser$boolLit),
+				$elm$parser$Parser$backtrackable(
 				A2(
-				$elm$parser$Parser$keeper,
-				A2(
-					$elm$parser$Parser$ignorer,
-					$elm$parser$Parser$succeed($author$project$ImpParser$Not),
-					$author$project$ImpParser$lexeme(
-						$elm$parser$Parser$symbol('not'))),
-				$elm$parser$Parser$lazy(
-					function (_v0) {
-						return $author$project$ImpParser$cyclic$parseBExp();
-					})),
+					$elm$parser$Parser$keeper,
+					A2(
+						$elm$parser$Parser$ignorer,
+						$elm$parser$Parser$succeed($author$project$ImpParser$Not),
+						$author$project$ImpParser$lexeme(
+							$elm$parser$Parser$keyword('not'))),
+					$elm$parser$Parser$lazy(
+						function (_v0) {
+							return $author$project$ImpParser$cyclic$parseBExp();
+						}))),
 				$elm$parser$Parser$backtrackable(
 				A2(
 					$elm$parser$Parser$keeper,
@@ -7068,11 +7104,12 @@ function $author$project$ImpParser$cyclic$parseUnaryCommand() {
 				$elm$parser$Parser$oneOf(
 					_List_fromArray(
 						[
+							$elm$parser$Parser$backtrackable(
 							A2(
-							$elm$parser$Parser$ignorer,
-							$elm$parser$Parser$succeed($author$project$ImpParser$Skip),
-							$author$project$ImpParser$lexeme(
-								$elm$parser$Parser$symbol('skip'))),
+								$elm$parser$Parser$ignorer,
+								$elm$parser$Parser$succeed($author$project$ImpParser$Skip),
+								$author$project$ImpParser$lexeme(
+									$elm$parser$Parser$keyword('skip')))),
 							A2(
 							$elm$parser$Parser$keeper,
 							A2(
@@ -7094,12 +7131,12 @@ function $author$project$ImpParser$cyclic$parseUnaryCommand() {
 										$elm$parser$Parser$ignorer,
 										$elm$parser$Parser$succeed($author$project$ImpParser$If),
 										$author$project$ImpParser$lexeme(
-											$elm$parser$Parser$symbol('if'))),
+											$elm$parser$Parser$keyword('if'))),
 									A2(
 										$elm$parser$Parser$ignorer,
 										$author$project$ImpParser$parseBExp,
 										$author$project$ImpParser$lexeme(
-											$elm$parser$Parser$symbol('then')))),
+											$elm$parser$Parser$keyword('then')))),
 								A2(
 									$elm$parser$Parser$ignorer,
 									$elm$parser$Parser$lazy(
@@ -7107,7 +7144,7 @@ function $author$project$ImpParser$cyclic$parseUnaryCommand() {
 											return $author$project$ImpParser$cyclic$parseCommands();
 										}),
 									$author$project$ImpParser$lexeme(
-										$elm$parser$Parser$symbol('else')))),
+										$elm$parser$Parser$keyword('else')))),
 							$elm$parser$Parser$lazy(
 								function (_v1) {
 									return $author$project$ImpParser$cyclic$parseUnaryCommand();
@@ -7120,12 +7157,12 @@ function $author$project$ImpParser$cyclic$parseUnaryCommand() {
 									$elm$parser$Parser$ignorer,
 									$elm$parser$Parser$succeed($author$project$ImpParser$While),
 									$author$project$ImpParser$lexeme(
-										$elm$parser$Parser$symbol('while'))),
+										$elm$parser$Parser$keyword('while'))),
 								A2(
 									$elm$parser$Parser$ignorer,
 									$author$project$ImpParser$parseBExp,
 									$author$project$ImpParser$lexeme(
-										$elm$parser$Parser$symbol('do')))),
+										$elm$parser$Parser$keyword('do')))),
 							$elm$parser$Parser$lazy(
 								function (_v2) {
 									return $author$project$ImpParser$cyclic$parseUnaryCommand();
