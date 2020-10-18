@@ -8,7 +8,9 @@ body {
 }
 
 .interpreter *{
+/*
     font-family: 'Inconsolata', monospace;
+*/
     color: #111;
     padding: 0 0;
 }
@@ -33,11 +35,13 @@ body {
 }
 
 #derivationTree {
-    line-height: 1em
+    line-height: 1.5em
 }
 
 #derivationTree * {
+/*
     font-family: 'Inconsolata', monospace;    
+*/
 }
     
 
