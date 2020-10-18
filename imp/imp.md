@@ -7,6 +7,7 @@ IMP is a tiny imperative language specially designed for giving a formal descrip
 Input commands and an initial state then press run to see the derivation tree (based on big-step semantics).
 
 <div id="myapp"></div>
+<div id="derivationTree"></div>
 
 - Syntax 
   - `a` ::= (arithmetic expression)
@@ -37,9 +38,20 @@ Input commands and an initial state then press run to see the derivation tree (b
 - twitter[@sano65747676](https://twitter.com/sano65747676)
   - Please feel free to contact me.
 
+<link href="https://fonts.googleapis.com/css2?family=Reenie+Beanie&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="./proofTree/proofTree.css">
+<script src="./proofTree/proofTree.js"></script>
+<link rel="stylesheet" href="style.css">
 <script src="imp.js"></script>
 <script>
   var app = Elm.Main.init({
     node: document.getElementById('myapp')
+  });
+  
+  app.ports.sendData.subscribe( ( data ) => {
+  console.log("Data from Elm: ", data);
+
+  const tree = document.getElementById( "derivationTree" );
+    renderProofTree( tree, data );
   });
 </script>
