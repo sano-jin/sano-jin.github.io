@@ -6347,7 +6347,7 @@ var $elm$parser$Parser$Advanced$spaces = $elm$parser$Parser$Advanced$chompWhile(
 		return (c === ' ') || ((c === '\n') || (c === '\r'));
 	});
 var $elm$parser$Parser$spaces = $elm$parser$Parser$Advanced$spaces;
-var $author$project$ImpParser$lexeme = function (p) {
+var $author$project$Parsec$lexeme = function (p) {
 	return A2($elm$parser$Parser$ignorer, p, $elm$parser$Parser$spaces);
 };
 var $elm$core$Tuple$pair = F2(
@@ -6505,12 +6505,6 @@ var $elm$parser$Parser$Advanced$oneOf = function (parsers) {
 	};
 };
 var $elm$parser$Parser$oneOf = $elm$parser$Parser$Advanced$oneOf;
-var $elm$parser$Parser$Advanced$succeed = function (a) {
-	return function (s) {
-		return A3($elm$parser$Parser$Advanced$Good, false, a, s);
-	};
-};
-var $elm$parser$Parser$succeed = $elm$parser$Parser$Advanced$succeed;
 var $elm$parser$Parser$ExpectingSymbol = function (a) {
 	return {$: 8, a: a};
 };
@@ -6541,22 +6535,27 @@ var $elm$parser$Parser$symbol = function (str) {
 			str,
 			$elm$parser$Parser$ExpectingSymbol(str)));
 };
-var $author$project$ImpParser$sandwitched = F3(
+var $author$project$Parsec$lexSym = A2($elm$core$Basics$composeL, $author$project$Parsec$lexeme, $elm$parser$Parser$symbol);
+var $elm$parser$Parser$Advanced$succeed = function (a) {
+	return function (s) {
+		return A3($elm$parser$Parser$Advanced$Good, false, a, s);
+	};
+};
+var $elm$parser$Parser$succeed = $elm$parser$Parser$Advanced$succeed;
+var $author$project$Parsec$sandwitched = F3(
 	function (left, right, p) {
 		return A2(
 			$elm$parser$Parser$keeper,
 			A2(
 				$elm$parser$Parser$ignorer,
 				$elm$parser$Parser$succeed($elm$core$Basics$identity),
-				$author$project$ImpParser$lexeme(
-					$elm$parser$Parser$symbol(left))),
+				$author$project$Parsec$lexSym(left)),
 			A2(
 				$elm$parser$Parser$ignorer,
 				p,
-				$author$project$ImpParser$lexeme(
-					$elm$parser$Parser$symbol(right))));
+				$author$project$Parsec$lexSym(right)));
 	});
-var $author$project$ImpParser$paren = A2($author$project$ImpParser$sandwitched, '(', ')');
+var $author$project$Parsec$paren = A2($author$project$Parsec$sandwitched, '(', ')');
 var $author$project$ImpParser$Mul = F2(
 	function (a, b) {
 		return {$: 3, a: a, b: b};
@@ -6640,7 +6639,7 @@ var $author$project$ImpParser$myInt = A2(
 				$elm$parser$Parser$succeed(0),
 				$elm$parser$Parser$chompIf($elm$core$Char$isDigit)),
 			$elm$parser$Parser$chompWhile($elm$core$Char$isDigit))));
-var $author$project$ImpParser$intLit = $author$project$ImpParser$lexeme(
+var $author$project$ImpParser$intLit = $author$project$Parsec$lexeme(
 	$elm$parser$Parser$oneOf(
 		_List_fromArray(
 			[
@@ -6649,7 +6648,7 @@ var $author$project$ImpParser$intLit = $author$project$ImpParser$lexeme(
 				A2(
 					$elm$parser$Parser$ignorer,
 					$elm$parser$Parser$succeed($elm$core$Basics$negate),
-					$author$project$ImpParser$lexeme(
+					$author$project$Parsec$lexeme(
 						$elm$parser$Parser$symbol('-'))),
 				$author$project$ImpParser$myInt),
 				$author$project$ImpParser$myInt
@@ -6760,7 +6759,7 @@ var $elm$parser$Parser$Done = function (a) {
 var $elm$parser$Parser$Loop = function (a) {
 	return {$: 0, a: a};
 };
-var $author$project$ImpParser$sepBy1FoldHelp = F4(
+var $author$project$Parsec$sepBy1FoldlHelp = F4(
 	function (f, sep, p, as_) {
 		return $elm$parser$Parser$oneOf(
 			_List_fromArray(
@@ -6774,8 +6773,7 @@ var $author$project$ImpParser$sepBy1FoldHelp = F4(
 								return $elm$parser$Parser$Loop(
 									A2(f, as_, a));
 							}),
-						$author$project$ImpParser$lexeme(
-							$elm$parser$Parser$symbol(sep))),
+						$author$project$Parsec$lexSym(sep)),
 					p),
 					A2(
 					$elm$parser$Parser$map,
@@ -6785,14 +6783,14 @@ var $author$project$ImpParser$sepBy1FoldHelp = F4(
 					$elm$parser$Parser$succeed(0))
 				]));
 	});
-var $author$project$ImpParser$sepBy1Fold = F3(
+var $author$project$Parsec$sepBy1Foldl = F3(
 	function (f, sep, p) {
 		return A2(
 			$elm$parser$Parser$andThen,
 			A2(
 				$author$project$Util$flip,
 				$elm$parser$Parser$loop,
-				A3($author$project$ImpParser$sepBy1FoldHelp, f, sep, p)),
+				A3($author$project$Parsec$sepBy1FoldlHelp, f, sep, p)),
 			p);
 	});
 var $elm$core$Set$Set_elm_builtin = $elm$core$Basics$identity;
@@ -6886,7 +6884,7 @@ var $elm$parser$Parser$variable = function (i) {
 	return $elm$parser$Parser$Advanced$variable(
 		{W: $elm$parser$Parser$ExpectingVariable, aO: i.aO, aY: i.aY, a_: i.a_});
 };
-var $author$project$ImpParser$varLit = $author$project$ImpParser$lexeme(
+var $author$project$ImpParser$varLit = $author$project$Parsec$lexeme(
 	$elm$parser$Parser$variable(
 		{
 			aO: function (c) {
@@ -6899,14 +6897,14 @@ var $author$project$ImpParser$varLit = $author$project$ImpParser$lexeme(
 		}));
 function $author$project$ImpParser$cyclic$parseSum() {
 	return A3(
-		$author$project$ImpParser$sepBy1Fold,
+		$author$project$Parsec$sepBy1Foldl,
 		$author$project$ImpParser$Sum,
 		'+',
 		$author$project$ImpParser$cyclic$parseMul());
 }
 function $author$project$ImpParser$cyclic$parseMul() {
 	return A3(
-		$author$project$ImpParser$sepBy1Fold,
+		$author$project$Parsec$sepBy1Foldl,
 		$author$project$ImpParser$Mul,
 		'*',
 		$author$project$ImpParser$cyclic$parseUnaryAExp());
@@ -6919,7 +6917,7 @@ function $author$project$ImpParser$cyclic$parseUnaryAExp() {
 				A2($elm$parser$Parser$map, $author$project$ImpParser$Num, $author$project$ImpParser$intLit),
 				$elm$parser$Parser$lazy(
 				function (_v0) {
-					return $author$project$ImpParser$paren(
+					return $author$project$Parsec$paren(
 						$author$project$ImpParser$cyclic$parseSum());
 				})
 			]));
@@ -6954,12 +6952,12 @@ var $author$project$ImpParser$Bool = function (a) {
 var $author$project$ImpParser$falseLit = A2(
 	$elm$parser$Parser$ignorer,
 	$elm$parser$Parser$succeed(false),
-	$author$project$ImpParser$lexeme(
+	$author$project$Parsec$lexeme(
 		$elm$parser$Parser$keyword('false')));
 var $author$project$ImpParser$trueLit = A2(
 	$elm$parser$Parser$ignorer,
 	$elm$parser$Parser$succeed(true),
-	$author$project$ImpParser$lexeme(
+	$author$project$Parsec$lexeme(
 		$elm$parser$Parser$keyword('true')));
 var $author$project$ImpParser$boolLit = A2(
 	$elm$parser$Parser$map,
@@ -6967,9 +6965,41 @@ var $author$project$ImpParser$boolLit = A2(
 	$elm$parser$Parser$oneOf(
 		_List_fromArray(
 			[$author$project$ImpParser$trueLit, $author$project$ImpParser$falseLit])));
+var $author$project$Parsec$sepBy1FoldrHelp = F4(
+	function (f, sep, p, as_) {
+		return A2(
+			$elm$parser$Parser$andThen,
+			function (a) {
+				return $elm$parser$Parser$oneOf(
+					_List_fromArray(
+						[
+							A2(
+							$elm$parser$Parser$ignorer,
+							$elm$parser$Parser$succeed(
+								$elm$parser$Parser$Loop(
+									A2($elm$core$List$cons, a, as_))),
+							$author$project$Parsec$lexSym(sep)),
+							$elm$parser$Parser$succeed(
+							$elm$parser$Parser$Done(
+								A3(
+									$elm$core$List$foldl,
+									$author$project$Util$flip(f),
+									a,
+									as_)))
+						]));
+			},
+			p);
+	});
+var $author$project$Parsec$sepBy1Foldr = F3(
+	function (f, sep, p) {
+		return A2(
+			$elm$parser$Parser$loop,
+			_List_Nil,
+			A3($author$project$Parsec$sepBy1FoldrHelp, f, sep, p));
+	});
 function $author$project$ImpParser$cyclic$parseBExp() {
 	return A3(
-		$author$project$ImpParser$sepBy1Fold,
+		$author$project$Parsec$sepBy1Foldr,
 		$author$project$ImpParser$And,
 		'&',
 		$author$project$ImpParser$cyclic$parseUnaryBool());
@@ -6985,7 +7015,7 @@ function $author$project$ImpParser$cyclic$parseUnaryBool() {
 					A2(
 						$elm$parser$Parser$ignorer,
 						$elm$parser$Parser$succeed($author$project$ImpParser$Not),
-						$author$project$ImpParser$lexeme(
+						$author$project$Parsec$lexeme(
 							$elm$parser$Parser$keyword('not'))),
 					$elm$parser$Parser$lazy(
 						function (_v0) {
@@ -7000,10 +7030,10 @@ function $author$project$ImpParser$cyclic$parseUnaryBool() {
 						A2(
 							$elm$parser$Parser$ignorer,
 							$author$project$ImpParser$parseAExp,
-							$author$project$ImpParser$lexeme(
+							$author$project$Parsec$lexeme(
 								$elm$parser$Parser$symbol('<=')))),
 					$author$project$ImpParser$parseAExp)),
-				$author$project$ImpParser$paren(
+				$author$project$Parsec$paren(
 				$elm$parser$Parser$lazy(
 					function (_v1) {
 						return $author$project$ImpParser$cyclic$parseBExp();
@@ -7018,7 +7048,7 @@ var $author$project$ImpParser$parseUnaryBool = $author$project$ImpParser$cyclic$
 $author$project$ImpParser$cyclic$parseUnaryBool = function () {
 	return $author$project$ImpParser$parseUnaryBool;
 };
-var $author$project$ImpParser$sepByEndHelp = F3(
+var $author$project$Parsec$sepByEndHelp = F3(
 	function (sep, p, as_) {
 		return $elm$parser$Parser$oneOf(
 			_List_fromArray(
@@ -7034,8 +7064,7 @@ var $author$project$ImpParser$sepByEndHelp = F3(
 									$elm$parser$Parser$succeed(
 										$elm$parser$Parser$Loop(
 											A2($elm$core$List$cons, a, as_))),
-									$author$project$ImpParser$lexeme(
-										$elm$parser$Parser$symbol(sep))),
+									$author$project$Parsec$lexSym(sep)),
 									$elm$parser$Parser$succeed(
 									$elm$parser$Parser$Done(
 										$elm$core$List$reverse(
@@ -7052,14 +7081,14 @@ var $author$project$ImpParser$sepByEndHelp = F3(
 					$elm$parser$Parser$succeed(0))
 				]));
 	});
-var $author$project$ImpParser$sepByEnd = F2(
+var $author$project$Parsec$sepByEnd = F2(
 	function (sep, p) {
 		return A2(
 			$elm$parser$Parser$loop,
 			_List_Nil,
-			A2($author$project$ImpParser$sepByEndHelp, sep, p));
+			A2($author$project$Parsec$sepByEndHelp, sep, p));
 	});
-var $author$project$ImpParser$sepByEnd1 = F2(
+var $author$project$Parsec$sepByEnd1 = F2(
 	function (sep, p) {
 		return A2(
 			$elm$parser$Parser$keeper,
@@ -7075,9 +7104,8 @@ var $author$project$ImpParser$sepByEnd1 = F2(
 						A2(
 							$elm$parser$Parser$ignorer,
 							$elm$parser$Parser$succeed($elm$core$Basics$identity),
-							$author$project$ImpParser$lexeme(
-								$elm$parser$Parser$symbol(sep))),
-						A2($author$project$ImpParser$sepByEnd, sep, p)),
+							$author$project$Parsec$lexSym(sep)),
+						A2($author$project$Parsec$sepByEnd, sep, p)),
 						$elm$parser$Parser$succeed(_List_Nil)
 					])));
 	});
@@ -7090,7 +7118,7 @@ function $author$project$ImpParser$cyclic$parseCommands() {
 		$elm$parser$Parser$map,
 		$elm$core$List$concat,
 		A2(
-			$author$project$ImpParser$sepByEnd1,
+			$author$project$Parsec$sepByEnd1,
 			';',
 			$author$project$ImpParser$cyclic$parseUnaryCommand()));
 }
@@ -7108,7 +7136,7 @@ function $author$project$ImpParser$cyclic$parseUnaryCommand() {
 							A2(
 								$elm$parser$Parser$ignorer,
 								$elm$parser$Parser$succeed($author$project$ImpParser$Skip),
-								$author$project$ImpParser$lexeme(
+								$author$project$Parsec$lexeme(
 									$elm$parser$Parser$keyword('skip')))),
 							A2(
 							$elm$parser$Parser$keeper,
@@ -7118,7 +7146,7 @@ function $author$project$ImpParser$cyclic$parseUnaryCommand() {
 								A2(
 									$elm$parser$Parser$ignorer,
 									$author$project$ImpParser$varLit,
-									$author$project$ImpParser$lexeme(
+									$author$project$Parsec$lexeme(
 										$elm$parser$Parser$symbol(':=')))),
 							$author$project$ImpParser$parseAExp),
 							A2(
@@ -7130,12 +7158,12 @@ function $author$project$ImpParser$cyclic$parseUnaryCommand() {
 									A2(
 										$elm$parser$Parser$ignorer,
 										$elm$parser$Parser$succeed($author$project$ImpParser$If),
-										$author$project$ImpParser$lexeme(
+										$author$project$Parsec$lexeme(
 											$elm$parser$Parser$keyword('if'))),
 									A2(
 										$elm$parser$Parser$ignorer,
 										$author$project$ImpParser$parseBExp,
-										$author$project$ImpParser$lexeme(
+										$author$project$Parsec$lexeme(
 											$elm$parser$Parser$keyword('then')))),
 								A2(
 									$elm$parser$Parser$ignorer,
@@ -7143,7 +7171,7 @@ function $author$project$ImpParser$cyclic$parseUnaryCommand() {
 										function (_v0) {
 											return $author$project$ImpParser$cyclic$parseCommands();
 										}),
-									$author$project$ImpParser$lexeme(
+									$author$project$Parsec$lexeme(
 										$elm$parser$Parser$keyword('else')))),
 							$elm$parser$Parser$lazy(
 								function (_v1) {
@@ -7156,19 +7184,19 @@ function $author$project$ImpParser$cyclic$parseUnaryCommand() {
 								A2(
 									$elm$parser$Parser$ignorer,
 									$elm$parser$Parser$succeed($author$project$ImpParser$While),
-									$author$project$ImpParser$lexeme(
+									$author$project$Parsec$lexeme(
 										$elm$parser$Parser$keyword('while'))),
 								A2(
 									$elm$parser$Parser$ignorer,
 									$author$project$ImpParser$parseBExp,
-									$author$project$ImpParser$lexeme(
+									$author$project$Parsec$lexeme(
 										$elm$parser$Parser$keyword('do')))),
 							$elm$parser$Parser$lazy(
 								function (_v2) {
 									return $author$project$ImpParser$cyclic$parseUnaryCommand();
 								}))
 						]))),
-				$author$project$ImpParser$paren(
+				$author$project$Parsec$paren(
 				$elm$parser$Parser$lazy(
 					function (_v3) {
 						return $author$project$ImpParser$cyclic$parseCommands();
@@ -7191,10 +7219,10 @@ var $author$project$ImpParser$parseCorrespondence = A2(
 		A2(
 			$elm$parser$Parser$ignorer,
 			$author$project$ImpParser$varLit,
-			$author$project$ImpParser$lexeme(
+			$author$project$Parsec$lexeme(
 				$elm$parser$Parser$symbol('->')))),
 	$author$project$ImpParser$intLit);
-var $author$project$ImpParser$sepByHelp = F3(
+var $author$project$Parsec$sepByHelp = F3(
 	function (sep, p, as_) {
 		return $elm$parser$Parser$oneOf(
 			_List_fromArray(
@@ -7208,8 +7236,7 @@ var $author$project$ImpParser$sepByHelp = F3(
 								return $elm$parser$Parser$Loop(
 									A2($elm$core$List$cons, a, as_));
 							}),
-						$author$project$ImpParser$lexeme(
-							$elm$parser$Parser$symbol(sep))),
+						$author$project$Parsec$lexSym(sep)),
 					p),
 					A2(
 					$elm$parser$Parser$map,
@@ -7220,32 +7247,32 @@ var $author$project$ImpParser$sepByHelp = F3(
 					$elm$parser$Parser$succeed(0))
 				]));
 	});
-var $author$project$ImpParser$sepBy1 = F2(
+var $author$project$Parsec$sepBy1 = F2(
 	function (sep, p) {
 		return A2(
 			$elm$parser$Parser$andThen,
 			A2(
 				$author$project$Util$flip,
 				$elm$parser$Parser$loop,
-				A2($author$project$ImpParser$sepByHelp, sep, p)),
+				A2($author$project$Parsec$sepByHelp, sep, p)),
 			A2($elm$parser$Parser$map, $elm$core$List$singleton, p));
 	});
-var $author$project$ImpParser$sepBy = F2(
+var $author$project$Parsec$sepBy = F2(
 	function (sep, p) {
 		return $elm$parser$Parser$oneOf(
 			_List_fromArray(
 				[
-					A2($author$project$ImpParser$sepBy1, sep, p),
+					A2($author$project$Parsec$sepBy1, sep, p),
 					$elm$parser$Parser$succeed(_List_Nil)
 				]));
 	});
 var $author$project$ImpParser$parseState = A3(
-	$author$project$ImpParser$sandwitched,
+	$author$project$Parsec$sandwitched,
 	'{',
 	'}',
-	A2($author$project$ImpParser$sepBy, ',', $author$project$ImpParser$parseCorrespondence));
+	A2($author$project$Parsec$sepBy, ',', $author$project$ImpParser$parseCorrespondence));
 var $author$project$ImpParser$parseImp = A3(
-	$author$project$ImpParser$sandwitched,
+	$author$project$Parsec$sandwitched,
 	'<',
 	'>',
 	A2(
@@ -7256,7 +7283,7 @@ var $author$project$ImpParser$parseImp = A3(
 			A2(
 				$elm$parser$Parser$ignorer,
 				$author$project$ImpParser$parseCommands,
-				$author$project$ImpParser$lexeme(
+				$author$project$Parsec$lexeme(
 					$elm$parser$Parser$symbol(',')))),
 		$author$project$ImpParser$parseState));
 var $author$project$ImpParser$parser = A2(
@@ -7433,7 +7460,7 @@ var $elm$html$Html$Events$onInput = function (tagger) {
 			A2($elm$json$Json$Decode$map, tagger, $elm$html$Html$Events$targetValue)));
 };
 var $elm$html$Html$Attributes$placeholder = $elm$html$Html$Attributes$stringProperty('placeholder');
-var $author$project$ImpParser$problem2String = function (problem) {
+var $author$project$Parsec$problem2String = function (problem) {
 	switch (problem.$) {
 		case 0:
 			var str = problem.a;
@@ -7449,7 +7476,7 @@ var $author$project$ImpParser$problem2String = function (problem) {
 			return 'expecting symbol ' + str;
 		case 9:
 			var str = problem.a;
-			return 'expecting keyword' + str;
+			return 'expecting keyword ' + str;
 		case 10:
 			return 'execting end';
 		case 11:
@@ -7518,7 +7545,7 @@ var $author$project$Main$view = function (model) {
 									_List_fromArray(
 										[
 											$elm$html$Html$text(
-											$author$project$ImpParser$problem2String(err.aX)),
+											$author$project$Parsec$problem2String(err.aX)),
 											A2(
 											$elm$html$Html$div,
 											_List_Nil,
