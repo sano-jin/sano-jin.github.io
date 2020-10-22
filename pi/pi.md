@@ -7,7 +7,6 @@ title: pi calculus interpreter
 - You CANNOT use this. Please wait...
 
 This is a simple pi-calculus interpreter.
-
 input an expression and press "run" to run. 
 
 <div id="myapp"></div>
