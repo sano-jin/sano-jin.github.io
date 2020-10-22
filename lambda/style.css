@@ -14,25 +14,37 @@
     text-align: left;
 }
 
-.console .reader::placeholder {
-  color: #444;
+.console {
+    display: block;
+    margin: 10px auto;
+}
+    
+.interpreter .console .reader::placeholder {
+  color: #aaa;
 }
 
-.console .reader {
+.interpreter .console .reader {
     text-align: left;
-    border: 1px solid gray;
-    background: rgba(0,0,0,0.05);
+    border: 1px solid lightblue;
     outline: none;
-    width: 100%;
+    display: block;
+    padding: 5px 5px;
 }
 
-.console .submitter{
-    border: 1px solid gray;
+.interpreter .console .submitter{
+    border: 1px solid lightblue;
     border-radius: 50px;
     height: max;
-    padding: 0 20px;
+    padding: 5px 20px;
     outline: none;
+    margin: 10px auto;
+    text-align: center;
 }
+
+.interpreter .console .reader{
+    width: calc(100% - 12px);
+}
+
 
 .states {
     display: block;
@@ -106,10 +118,6 @@
     width: 10%;
     bottom: .5em;
     position: absolute;
-}
-
-.console {
-    width: 100%;
 }
 
 
