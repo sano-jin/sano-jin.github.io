@@ -1,0 +1,13 @@
+theme: jekyll-theme-minimal
+title: Jin SANO
+description: IMP Interpreter
+lsi: false
+safe: true
+incremental: false
+highlighter: rouge
+gist:
+  noscript: false
+kramdown:
+  math_engine: mathjax
+  syntax_highlighter: rouge
+logo: bg-sq-dots.png
