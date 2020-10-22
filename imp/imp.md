@@ -1,10 +1,10 @@
 ---
-title: IMP interpreter
+title: IMP Interpreter
 ---
 <link href="https://fonts.googleapis.com/css2?family=Inconsolata&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 
-# IMP interpreter
+# IMP Interpreter
 
 IMP is a tiny imperative language specially designed for giving a formal description on execution of a program: Operational Semantics. 
 
