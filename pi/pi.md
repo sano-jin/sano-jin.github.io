@@ -12,7 +12,7 @@ input an expression and press "run" to run.
 
 <div id="myapp"></div>
 
-## Syntax (according to Wikipedia)
+## Syntax
 - `P`, `Q` =
   - `x!y` (Send the value y over channel x)
   - `x?y.P` (Receive on channel x, bind the result to y, then run P)
