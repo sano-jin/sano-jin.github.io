@@ -1,5 +1,5 @@
 
-Hello, I am sano. 
+Hello from Tokyo, Japan. I'm Sano, a student at Waseda University majoring Computer Science. Welcome to my web portfolio!
 
 # Works
 Here are some of my works.
@@ -30,7 +30,7 @@ Select Processing Elements (PE), set write/read option and observe their states 
 - [Try it on your browser](https://sano-jin.github.io/moesi/moesi.html)
 - [Source code](https://github.com/sano-jin/moesi-emulator)
 
-# Contact
+# Links
 - [github](https://github.com/sano-jin)
 - twitter[@sano65747676](https://twitter.com/sano65747676)
   - Please feel free to contact me.
