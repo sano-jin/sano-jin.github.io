@@ -19,28 +19,32 @@ body {
 }
 
 .console {
+    display: block;
+    margin: 10px auto;
 }
     
 .interpreter .console .reader::placeholder {
+  color: #aaa;
 }
 
 .interpreter .console .reader {
     text-align: left;
-    border: 1px solid gray;
+    border: 1px solid lightblue;
+    background: rgba(0,0,0,0.005);
     outline: none;
+    display: block;
+    padding: 5px 5px;
     width: 100%;
 }
 
 .interpreter .console .submitter{
-    border: 1px solid gray;
+    border: 1px solid lightblue;
     border-radius: 50px;
     height: max;
-    padding: 0 20px;
+    padding: 5px 20px;
     outline: none;
-}
-
-.interpreter .console {
-    width: 100%;
+    margin: 10px auto;
+    text-align: center;
 }
 
 @media only screen and (min-width: 601px) {
