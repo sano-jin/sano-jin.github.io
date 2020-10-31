@@ -6593,7 +6593,7 @@ var $elm$parser$Parser$chompIf = function (isGood) {
 	return A2($elm$parser$Parser$Advanced$chompIf, isGood, $elm$parser$Parser$UnexpectedChar);
 };
 var $elm$parser$Parser$chompWhile = $elm$parser$Parser$Advanced$chompWhile;
-var $elm$core$String$foldr = _String_foldr;
+var $elm$core$String$foldl = _String_foldl;
 var $elm$parser$Parser$Advanced$mapChompedString = F2(
 	function (func, _v0) {
 		var parse = _v0;
@@ -6625,7 +6625,7 @@ var $elm$parser$Parser$getChompedString = $elm$parser$Parser$Advanced$getChomped
 var $author$project$ImpParser$myInt = A2(
 	$elm$parser$Parser$map,
 	A2(
-		$elm$core$String$foldr,
+		$elm$core$String$foldl,
 		F2(
 			function (c, d) {
 				return ((d * 10) + $elm$core$Char$toCode(c)) - 48;
