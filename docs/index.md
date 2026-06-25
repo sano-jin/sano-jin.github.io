@@ -15,7 +15,7 @@ type systems, software verification, and graph transformation.
 
 Refereed Publications
 
-1. ([paper](https://doi.org/10.2197/ipsjjip.34.469)
+1. ([paper](https://doi.org/10.2197/ipsjjip.34.469),
    [extended arXiv](https://arxiv.org/abs/2510.17429))
    **Jin Sano**, Naoki Yamamoto, and Kazunori Ueda:
    "Introducing Linear Implication Types to λGT for Computing With Incomplete Graphs",
