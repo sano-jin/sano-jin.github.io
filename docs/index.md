@@ -61,12 +61,14 @@ Unrefereed Publications
 
 # Awards
 
-1. July 2023:
+1. July 2026:
+   [IPSJ Computer Science Research Award for Young Scientists](https://www.ipsj.or.jp/award/cs-award-2026.html)
+2. July 2023:
    [IPSJ Computer Science Research Award for Young Scientists](https://www.ipsj.or.jp/award/cs-award-2023.html)
-2. September 2022:
+3. September 2022:
    [Presentation Award](https://jssst2022.wordpress.com/).
    The 39th JSSST Annual Conference, 2022.
-3. September 2021:
+4. September 2021:
    [Student Encouragement Award](https://jssst2021.wordpress.com/).
    The 38th JSSST Annual Conference, 2021.
 
