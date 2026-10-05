@@ -79,7 +79,7 @@ Unrefereed Publications
 
 # Education
 
-- April 2024 -- Present:
+- April 2024 -- September 2026:
   Doctoral Program in Computer Science and Communications Engineering
   Graduate School of Fundamental Science and Engineering,
   Waseda University.
