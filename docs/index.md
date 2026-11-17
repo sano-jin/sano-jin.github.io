@@ -1,5 +1,6 @@
-I am a software engineer and researcher in Tokyo, Japan,
+Jin Sano is a software engineer and researcher in Tokyo, Japan,
 with interests in programming language theory and design.
+PhD in engineering (Waseda University, Japan).
 
 - <https://orcid.org/0000-0003-4616-4767>
 - [x/twitter: sano_jn](https://twitter.com/sano_jn)
